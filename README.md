@@ -4,9 +4,6 @@ A voice customer-support agent for ZentroMart, a fictional Indian online store. 
 question; the agent answers from the company's policy documents, looks up orders, hands over to a human
 when needed, and replies with speech in English, Hindi or Hinglish.
 
-**Repository:** https://github.com/1purvi/VoiceOps  
-**Author:** Dharmana Purvi
-
 ```
 customer audio → Gnani STT → agent (LLM + document search + tools) → Gnani TTS → spoken reply
 ```
@@ -99,19 +96,6 @@ sample_outputs/            example replies and saved practice results
 report.pdf                 project report
 demo.mp4                   demo video
 ```
-
-## Setup
-
-```
-git clone https://github.com/1purvi/VoiceOps.git
-cd VoiceOps
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-1. Download `Capstone_Project_Dataset_FTTT_2026.zip` and extract it into the `VoiceOps` folder.
-2. Copy `.env.example` to `.env` and add your Gnani API key and LLM API key.
 
 ## Run
 

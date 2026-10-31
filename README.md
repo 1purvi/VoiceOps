@@ -1,123 +1,129 @@
-# ZentroMart Voice Support Agent — VoiceOps 2026
+# VoiceOps — ZentroMart Voice Support Agent
 
-Capstone for the LLM & Generative AI course (Consulting & Analytics Club, IIT Guwahati × Gnani.ai).
-Author: **Dharmana Purvi**
-Repository: <PUBLIC_GITHUB_URL>
+A voice customer-support agent for ZentroMart, a fictional Indian online store. A customer speaks a
+question; the agent answers from the company's policy documents, looks up orders, hands over to a human
+when needed, and replies with speech in English, Hindi or Hinglish.
 
-A customer-support agent for ZentroMart (a fictional Indian online store) that answers from company
-documents, holds a multi-turn conversation with order lookup and ticket tools, and talks over voice with
-Gnani speech-to-text and text-to-speech.
-
-```
-customer audio → Gnani STT → agent (LLM + RAG + tools) → Gnani TTS → spoken reply
-```
-
-| Step | What | Result |
-| --- | --- | --- |
-| 1 | Prompt-only LLM on `practice/questions.csv` | 12 / 52 correct (23.1%) |
-| 2 | RAG over `kb/` (hybrid dense + BM25) | 52 / 52 correct (100%) |
-| 3 | Agent with tools + memory on `practice/conversations.csv` | 96 / 96 turns, 23 / 23 conversations |
-| 4 | Gnani STT / TTS voice wrapper | English, Hindi and Hinglish calls end to end |
-
-Full write-up: [`report.pdf`](report.pdf). Demo: [`demo.mp4`](demo.mp4).
-
-## Repository layout
+**Repository:** https://github.com/1purvi/VoiceOps  
+**Author:** Dharmana Purvi
 
 ```
-├── README.md
-├── .env.example            copy to .env and fill in keys (never commit .env)
-├── requirements.txt
-├── run.py                  the one entry point: web-app call, or batch run over a folder of audio
-├── report.pdf
-├── demo.mp4
-├── src/
-│   ├── config.py           paths, .env loading, today = 20 Oct 2026
-│   ├── llm.py              Step 1: system prompt, LLM call, JSON parsing
-│   ├── metrics.py          scorer shared by Steps 1–3
-│   ├── eval_cache.py       cached evaluation runs for Steps 1–2
-│   ├── step1_baseline.ipynb
-│   ├── rag_pipeline.py     Step 2: chunking, hybrid retrieval, date table, grounded answer
-│   ├── step2_rag.ipynb
-│   ├── agent.py            Step 3: tool-using agent + conversation evaluator
-│   ├── step3_conversations.py
-│   ├── voice.py            Step 4: Gnani STT/TTS around the Step 3 agent
-│   ├── web_app.py          Gradio call UI started by run.py
-│   ├── batch_run.py        batch mode used by run.py --audio_dir
-│   ├── call_handsfree.py   optional terminal call (voice activity detection)
-│   ├── call_push_to_talk.py optional terminal call (press Enter to talk)
-│   └── data_validation.py  dataset checks
-└── sample_outputs/
-    ├── run/                    replies from run.py (text + audio + chunks used)
-    ├── live_call_2026-10-31/   a recorded live call (audio + JSON per turn)
-    └── evaluation/             Step 1–3 evaluation results (CSV)
+customer audio → Gnani STT → agent (LLM + document search + tools) → Gnani TTS → spoken reply
+```
+
+## Tech stack
+
+| Part | What is used |
+| --- | --- |
+| LLM | `nvidia/nemotron-3.5-super-vl-120b-a12b` through the NVIDIA API, called with the `openai` Python client (any OpenAI-compatible provider can be set in `.env`) |
+| Embeddings | `intfloat/multilingual-e5-base` (sentence-transformers), handles English and Hindi |
+| Keyword search | BM25 (`rank-bm25`) |
+| Vector store | In-memory `numpy` matrix of embeddings, saved to disk with `pickle` (no external vector database) |
+| Data | CSV files read with `pandas` (customers, orders, items, products, pincodes, holidays) |
+| Speech | Gnani only: `prisma-v3.0` speech-to-text and `timbre-v2.5` text-to-speech (voice Kaveri), via `gnani-vachana` |
+| Interface | Gradio web app; terminal mic calls with `sounddevice` |
+
+## How it works
+
+### 1. LLM and prompt
+The LLM gets a system prompt that makes it ZentroMart's AI support assistant, sets today's date
+(20 October 2026) and lists its rules. It must reply in JSON with:
+`key_facts` (exact figures from the documents), `decision` (`answer`, `clarify`, `escalate` or `refuse`),
+`reply` (what the customer hears) and `used_sections` (which document sections it relied on).
+
+### 2. Chunking strategy
+- Every policy document in `kb/` is split at its `[SECTION-ID]` headings, so one chunk = one policy section.
+- A section longer than 1,500 characters is split again at paragraph breaks.
+- Each chunk keeps its metadata: section ID, document title, document type (policy, agent guide, help, FAQ,
+  marketing), status (current or superseded), effective date and language.
+- Each product row in `products.csv` becomes its own chunk (title, price, return category, seller,
+  warranty), so questions about a specific product find it.
+
+### 3. Vector store and retrieval
+- Chunks are embedded once with `multilingual-e5-base` and stored as a `numpy` matrix in
+  `outputs/vector_index.pkl`; a BM25 keyword index is built beside it.
+- For each question, the meaning-based search (embeddings) and the keyword search (BM25) are combined
+  with reciprocal rank fusion.
+- Older (superseded) policies and lower-priority documents are ranked slightly lower
+  (policy > agent guide > help > FAQ > marketing). A product code in the question pulls that product's row.
+- Only the top sections are sent to the LLM, and it may answer only from them. If they do not cover the
+  question, it says it does not know and offers a human.
+
+### 4. Conversation agent and tools
+The agent runs a loop: the LLM decides which tool to call, sees the result, and repeats until it gives
+its final answer. Tools:
+
+| Tool | What it does |
+| --- | --- |
+| `search_kb` | searches the policy documents (the retrieval above) |
+| `lookup_order` | looks up an order; shows details only after the caller gives the last 4 phone digits or the delivery pincode |
+| `create_ticket` | hands the case to a human with a short summary |
+| `date_calc` | counts business days (Mon–Sat, skipping holidays) or calendar days in Python |
+| `final_answer` | returns the decision, reply and sections used |
+
+The agent remembers the whole conversation (order ID, verified order, tickets), so follow-up questions
+work without repeating details. Safety rules are enforced in code: at most two verification attempts,
+the pincode is never shown to the LLM, one ticket per issue, and a handover is confirmed only after the
+ticket is actually created.
+
+### 5. Voice
+- **Speech-to-text:** Gnani `prisma-v3.0` detects Hindi or English automatically and is given shop words
+  (refund, pincode, order ID…) and the previous sentence as hints.
+- **Text-to-speech:** Gnani `timbre-v2.5`; the speaking language follows the reply's script.
+- Replies are rewritten for the ear: order numbers in groups of four, rupee amounts in words, dates with
+  the year.
+- If nothing clear is heard, the agent asks the caller to repeat. Greetings and thanks are answered
+  instantly; in a live call, replies are kept to two or three short sentences.
+
+## What each file does
+
+```
+run.py                     start here: opens the call app, or runs a folder of audio files
+src/
+├── config.py              paths, settings and API keys loaded from .env
+├── llm.py                 system prompt, LLM call with retries, JSON parsing
+├── rag_pipeline.py        chunking, embeddings + BM25 index, hybrid retrieval, date table
+├── agent.py               conversation agent: tool loop, memory, verification and ticket rules
+├── voice.py               Gnani speech-to-text and text-to-speech around the agent
+├── web_app.py             Gradio page: record a question, hear the reply, keep the call going
+├── batch_run.py           answers every audio file in a folder and saves the results
+├── call_handsfree.py      terminal call that starts and stops recording on your voice
+├── call_push_to_talk.py   terminal call: press Enter to talk
+├── metrics.py             checks answers against the expected facts in the practice files
+├── eval_cache.py          runs and caches the practice questions
+├── step1_baseline.ipynb   Step 1: the LLM alone, without documents
+├── step2_rag.ipynb        Step 2: the LLM with document search
+├── step3_conversations.py Step 3: runs the multi-turn practice conversations
+└── data_validation.py     checks the dataset files before use
+sample_outputs/            example replies and saved practice results
+report.pdf                 project report
+demo.mp4                   demo video
 ```
 
 ## Setup
 
-1. Python 3.10+.
-2. Install dependencies:
-   ```
-   python -m venv .venv && source .venv/bin/activate
-   pip install -r requirements.txt
-   ```
-3. Download `Capstone_Project_Dataset_FTTT_2026.zip` (link in the capstone brief) and extract it into the
-   repository root, so that `Capstone_Project_Dataset_FTTT_2026/kb/` exists. The dataset is not committed.
-4. Copy `.env.example` to `.env` and fill in `GNANI_API_KEY` and the `LLM_*` values.
+```
+git clone https://github.com/1purvi/VoiceOps.git
+cd VoiceOps
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-The first run builds the vector index (`outputs/vector_index.pkl`), which takes about a minute.
+1. Download `Capstone_Project_Dataset_FTTT_2026.zip` and extract it into the `VoiceOps` folder.
+2. Copy `.env.example` to `.env` and add your Gnani API key and LLM API key.
 
 ## Run
 
-Everything starts from one file, `run.py`, in the repository root.
-
-**Talk to the agent (web app)**
+Talk to the agent (opens the browser and starts a call):
 
 ```
 python run.py
 ```
 
-The browser opens at http://127.0.0.1:7860, a call starts and the agent greets you by voice. Record a
-question with the mic and the agent answers in text and speech; follow-up questions keep the context. Say
-"bye" to end the call, or press **New call**. Every turn is saved to `outputs/live_calls/<timestamp>/`.
-Options: `--port 8000`, `--share` (public Gradio link), `--voice Kaveri`.
-
-**Batch run (organisers)**
+Run the agent on a folder of audio files (replies, audio and the document sections used are saved in
+`sample_outputs/run/`):
 
 ```
 python run.py --audio_dir path/to/audio_folder
-```
-
-Each audio file (`.wav .mp3 .m4a .flac .ogg .aac`) is a separate call. Add `--conversation` to treat the
-files, sorted by name, as one multi-turn call, and `--out_dir` to change the output folder (default
-`sample_outputs/run`). For every input file it writes:
-
-- `<name>.reply.wav` — the spoken reply (Gnani TTS)
-- `<name>.json` — transcript, reply text, decision, tool calls and the document chunks used (id, source, text)
-
-plus `results.csv` and `results.jsonl` for the whole folder.
-
-**Evaluation (Steps 1–3):** open `src/step1_baseline.ipynb` and `src/step2_rag.ipynb`, or run
-`python src/step3_conversations.py`. Saved results are in `sample_outputs/evaluation/`.
-
-## Tech used
-
-- **LLM:** `nvidia/nemotron-3.5-super-vl-120b-a12b` via the NVIDIA API (OpenAI-compatible; any provider works)
-- **Retrieval:** `sentence-transformers` (`intfloat/multilingual-e5-base`) + `rank-bm25`, fused with reciprocal rank fusion
-- **Tools:** provided `lookup_order` and `create_ticket`, plus `search_kb`, `date_calc`, `final_answer`
-- **Speech:** Gnani only — STT `prisma-v3.0`, TTS `timbre-v2.5` (voice Kaveri) via `gnani-vachana`
-- **Interface:** terminal (`sounddevice`) and Gradio
-
-## Rules followed
-
-- Gnani is the only speech service; there is no other STT/TTS, even as a fallback.
-- Only the synthetic ZentroMart data is used.
-- Answers come from the documents at run time; nothing is hardcoded.
-- API keys live in `.env`, which is git-ignored.
-
-## Building the submission ZIP
-
-```
-cd ..
-zip -r dharmana_purvi_voiceops.zip dharmana_purvi_voiceops \
-    -x "*/__pycache__/*" "*/.DS_Store" "*/.env" "*/.venv/*" "*/outputs/*" "*/Capstone_Project_Dataset_FTTT_2026/*"
 ```

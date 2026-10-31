@@ -2,7 +2,6 @@
 .env
 *.env.bak
 _env_backup*
-.env.example
 
 # environments and caches
 .venv/

@@ -98,7 +98,6 @@ demo.mp4                   demo video
 ```
 
 ## Run
-
 Talk to the agent (opens the browser and starts a call):
 
 ```

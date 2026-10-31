@@ -1,0 +1,14 @@
+,Step 3 (v4)
+turns scored,96
+turns correct (reply + tools),96 / 96 (100.0%)
+reply correct (ignoring tools),100.0%
+decision accuracy,100.0%
+avg fact recall,100.0%
+violations,0
+expected tool calls made,54 / 54
+unexpected tickets,0
+conversations fully correct,23 / 23
+recall@k,0.97
+hit@k,0.979
+mrr,0.258
+cite_precision,0.038

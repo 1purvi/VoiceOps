@@ -1,0 +1,1 @@
+conversation_id,turn,scenario,language,expected,decision,expected_tools,actual_tools,reply,gold,retrieved,decision_ok,fact_recall,all_facts,missing,violation,violations,correct,tools_expected,tools_hit,tools_ok,unexpected_ticket,turn_correct,recall@k,hit@k,mrr,cite_precision,cause

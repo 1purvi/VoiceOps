@@ -1,0 +1,98 @@
+{
+ "audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn05.customer.wav",
+ "reply_audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn05.reply.wav",
+ "error": null,
+ "transcript": "और रिफंड कितने दिन में आएगी?",
+ "stt_language": "hi-IN",
+ "stt_model": "prisma-v3.0",
+ "stt_s": 0.6,
+ "tts_language": "hi-IN",
+ "reply": "वस्तु की गुणवत्ता जाँच के बाद रिफंड शुरू होता है। रिफंड पिकअप के 2 बिजनेस दिन के अंदर शुरू होता है। चूंकि आप ZentroMart Plus सदस्य हैं, रिफंड पिकअप के समय शुरू होगा। आपका भुगतान वॉलेट से हुआ है, इसलिए रिफंड 2 घंटे के अंदर वॉलेट में आ जाएगा।",
+ "spoken_text": "वस्तु की गुणवत्ता जाँच के बाद रिफंड शुरू होता है। रिफंड पिकअप के 2 बिजनेस दिन के अंदर शुरू होता है। चूंकि आप ZentroMart Plus सदस्य हैं, रिफंड पिकअप के समय शुरू होगा। आपका भुगतान वॉलेट से हुआ है, इसलिए रिफंड 2 घंटे के अंदर वॉलेट में आ जाएगा।",
+ "decision": "answer",
+ "unclear_audio": false,
+ "used_sections": [
+  "RET-7",
+  "REF-2",
+  "PLS-2"
+ ],
+ "retrieved": [
+  "REF-2",
+  "REF-3",
+  "PAY-3",
+  "RET-7",
+  "KB-00.3",
+  "PAY-4",
+  "REF-1",
+  "RET-2",
+  "DEL-1",
+  "DEL-4",
+  "RET-3",
+  "PAY-1",
+  "RET-8",
+  "FAQ-1",
+  "PLS-3",
+  "REF-6",
+  "DWM-2",
+  "PLS-2",
+  "MKS-2",
+  "RET-6",
+  "RVP-2",
+  "RVP-3",
+  "RVP-1",
+  "DWM-4",
+  "CAN-2",
+  "REF-4",
+  "DEL-3",
+  "KB-00.1",
+  "KB-00.2",
+  "KB-00.4",
+  "STY-1",
+  "STY-2",
+  "STY-3",
+  "STY-4",
+  "STY-5",
+  "ESC-1",
+  "ESC-2",
+  "ESC-3",
+  "ESC-4",
+  "IDV-1",
+  "IDV-2",
+  "IDV-3",
+  "IDV-4",
+  "DWM-3",
+  "DWM-5"
+ ],
+ "chunks": [
+  {
+   "id": "RET-7",
+   "title": "After pickup",
+   "source": "pol_returns_v4.md",
+   "text": "Returned items go through a quality check (QC) at the warehouse. The refund is initiated within 2 business days of pickup once the item passes QC. For ZentroMart Plus members, the refund is initiated at the time of pickup. Refund timelines after initiation are in the Refunds policy."
+  },
+  {
+   "id": "REF-2",
+   "title": "How long refunds take after initiation",
+   "source": "pol_refunds.md",
+   "text": "Refunds go back to the original payment method. Timelines are counted in business days from the day the refund is initiated.\n\n| Payment method | Time to reach you |\n| --- | --- |\n| UPI | 1 to 3 business days |\n| Credit or debit card | 5 to 7 business days |\n| Net banking | 3 to 5 business days |\n| ZentroMart Wallet | Instant, within 2 hours |\n| Bank transfer (NEFT) for cash-on-delivery orders | 5 to 7 business days |\n| ZentroMart Wallet for cash-on-delivery orders | Instant, within 2 hours |"
+  },
+  {
+   "id": "PLS-2",
+   "title": "Benefits",
+   "source": "pol_plus_membership.md",
+   "text": "- Free Express delivery where Express is available.\n- No reverse pickup fee on any return.\n- Refunds on returns are initiated at pickup, without waiting for quality check.\n\nZentroMart Plus does **not** change return windows, return eligibility or refund timelines after initiation."
+  }
+ ],
+ "tool_calls": [
+  {
+   "name": "search_kb",
+   "query": "refund timeline wallet payment method business days"
+  },
+  {
+   "name": "search_kb",
+   "query": "refund process quality check after pickup"
+  }
+ ],
+ "seconds": 20.8,
+ "file": "turn05.customer.wav"
+}

@@ -1,0 +1,19 @@
+# secrets
+.env
+*.env.bak
+_env_backup*
+
+# environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.vscode/
+.DS_Store
+outputs/
+
+# dataset (download separately, see README) and generated files
+Capstone_Project_Dataset_FTTT_2026/
+outputs/
+*.pkl

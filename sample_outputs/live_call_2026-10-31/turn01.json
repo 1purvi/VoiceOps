@@ -1,0 +1,71 @@
+{
+ "audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn01.customer.wav",
+ "reply_audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn01.reply.wav",
+ "error": null,
+ "transcript": "Hi, I want to, I want a help with my order.",
+ "stt_language": "en-IN",
+ "stt_model": "prisma-v3.0",
+ "stt_s": 0.9,
+ "tts_language": "en-IN",
+ "reply": "Hello! I am ZentroMart's AI support assistant. I can help you with your order. Please share your 8-digit order ID so I can look it up.",
+ "spoken_text": "Hello! I am ZentroMart's AI support assistant. I can help you with your order. Please share your 8-digit order ID so I can look it up.",
+ "decision": "clarify",
+ "unclear_audio": false,
+ "used_sections": [],
+ "retrieved": [
+  "KB-00.1",
+  "KB-00.2",
+  "KB-00.3",
+  "KB-00.4",
+  "STY-1",
+  "STY-2",
+  "STY-3",
+  "STY-4",
+  "STY-5",
+  "ESC-1",
+  "ESC-2",
+  "ESC-3",
+  "ESC-4",
+  "IDV-1",
+  "IDV-2",
+  "IDV-3",
+  "IDV-4",
+  "DWM-3",
+  "DWM-5"
+ ],
+ "chunks": [
+  {
+   "id": "KB-00.1",
+   "title": "Which document wins",
+   "source": "00_about_this_knowledge_base.md",
+   "text": "When two documents disagree, follow this order of precedence:\n\n1. **Policy documents** (doc_type: policy) with status `current`.\n2. **Agent guides** (doc_type: agent_guide).\n3. **Help articles** (doc_type: help).\n4. **FAQs** (doc_type: faq).\n5. **Marketing pages** (doc_type: marketing). These describe benefits in general terms and never override a policy.\n\n\nDocuments marked `status: superseded` are kept for reference only. They apply only to the cases their successor document says they still cover."
+  },
+  {
+   "id": "KB-00.2",
+   "title": "Today's date",
+   "source": "00_about_this_knowledge_base.md",
+   "text": "All records in this dataset are frozen on **20 October 2026**. Treat this date as \"today\" when you calculate deadlines, delays and refund timelines."
+  },
+  {
+   "id": "KB-00.3",
+   "title": "Business days",
+   "source": "00_about_this_knowledge_base.md",
+   "text": "A business day is Monday to Saturday, excluding the warehouse holidays below. Refund and logistics timelines are counted in business days. Return windows are counted in calendar days.\n\n| Date | Holiday |\n| --- | --- |\n| 2026-08-15 | Independence Day |\n| 2026-10-02 | Gandhi Jayanti |\n| 2026-10-19 | Warehouse closure (festival) |\n| 2026-11-09 | Warehouse closure (festival) |"
+  },
+  {
+   "id": "KB-00.4",
+   "title": "Document list",
+   "source": "00_about_this_knowledge_base.md",
+   "text": "See the file names in this folder. Policy documents start with `pol_`, agent guides with `agent_`, help articles with `help_`, FAQs with `faq_`, and marketing pages with `mkt_`."
+  },
+  {
+   "id": "STY-1",
+   "title": "Opening",
+   "source": "agent_conversation_style.md",
+   "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+  }
+ ],
+ "tool_calls": [],
+ "seconds": 6.9,
+ "file": "turn01.customer.wav"
+}

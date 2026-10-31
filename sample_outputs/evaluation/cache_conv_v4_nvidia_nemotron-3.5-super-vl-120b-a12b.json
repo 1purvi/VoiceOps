@@ -1,0 +1,4510 @@
+{
+ "PC002": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI support assistant hoon. Aapke order ki help ke liye mujhe aapka 8-digit order ID chahiye. Kripya order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapki identity verify kar saku.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "89782837",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 89782837 delivered hua tha 15 October 2026 ko. Main aapki kaise madad kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "Order 89782837 verified",
+     "Status: delivered",
+     "Delivered on: 15 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "89782837",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "Maaf kijiye, main replacement approve nahi kar sakta kyunki yeh TV ₹31,649 ka hai aur ₹10,000 se zyada ke damaged item ke claims Priority Resolution team handle karti hai. Mainne ek ticket banaya hai: TKT1cad057fe17c4997b0f0682e9b8a05b6. Ek human colleague aapko jald hi contact karenge.",
+    "used_sections": [
+     "pol_damaged_wrong_missing.md:DWM-3",
+     "agent_escalation_handoff.md:ESC-1"
+    ],
+    "key_facts": [
+     "Zentro Vista 43-inch 4K Smart TV, SKU ELE-0021, ₹31,649",
+     "damaged item worth more than ₹10,000",
+     "Priority Resolution team handles claims over ₹10,000",
+     "agent cannot approve replacement",
+     "ticket ID: TKT1cad057fe17c4997b0f0682e9b8a05b6",
+     "human colleague will contact customer"
+    ],
+    "retrieved": [
+     "DWM-3",
+     "DWM-2",
+     "DWM-1",
+     "DWM-4",
+     "RET-5",
+     "ESC-1",
+     "DWM-5",
+     "RET-6",
+     "RVP-2",
+     "RET-7",
+     "REF-5",
+     "TRK-2",
+     "RVP-3",
+     "REF-1",
+     "products.csv:ELE-0008",
+     "FAQH-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "damaged wrong missing item high value more than 10000 priority resolution ticket"
+     },
+     {
+      "name": "create_ticket",
+      "order_id": "89782837",
+      "reason": "high_value_damage",
+      "created": true,
+      "ticket_id": "TKT1cad057fe17c4997b0f0682e9b8a05b6"
+     }
+    ],
+    "ticket_ids": [
+     "TKT1cad057fe17c4997b0f0682e9b8a05b6"
+    ]
+   }
+  ]
+ },
+ "PC003": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI support assistant hoon. Aapke order ki help ke liye mujhe aapka order ID chahiye. Kripya apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Verification ke liye kripya apne registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "18599253",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 18599253 delivered hua hai 12 October 2026 ko. Main aapki kaise help kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "Order 18599253 verified",
+     "Status: delivered",
+     "Delivered on: 12 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "18599253",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Haan, aap Kaafi Running Sneakers return kar sakti hain. Isaki return window 15 calendar days hai delivery se, jo 12 October 2026 ko hui thi, isliye last date 27 October 2026 hai. Aapka order 30 September ko place hua tha, isliye festive sale ki extended window nahi laagu hogi. Aap ZentroMart Plus member hain, isliye reverse pickup fee ₹49 nahi lagega. Item unused honi chahiye original tags aur packaging ke saath. Aap My Orders se return raise kar sakti hain.",
+    "used_sections": [
+     "pol_returns_v4.md:RET-2",
+     "pol_returns_v4.md:RET-8",
+     "pol_returns_v4.md:RET-6",
+     "pol_plus_membership.md:PLS-2",
+     "pol_returns_v4.md:RET-4",
+     "help_reverse_pickup.md:RVP-1",
+     "products.csv:FSH-0033"
+    ],
+    "key_facts": [
+     "Kaafi Running Sneakers, White (SKU FSH-0033), return category fashion",
+     "Return window: 15 calendar days from delivery date",
+     "Delivered on 12 October 2026",
+     "Return deadline: 27 October 2026",
+     "Order placed 30 September 2026, so festive sale extended window does not apply",
+     "Reverse pickup fee waived because you are a ZentroMart Plus member",
+     "Item must be unused with original tags and packaging",
+     "Raise return from My Orders in the app"
+    ],
+    "retrieved": [
+     "RET-2",
+     "RET-9",
+     "RET-3",
+     "FAQ-2",
+     "RETv3-2",
+     "products.csv:FSH-0035",
+     "MKS-2",
+     "products.csv:FSH-0026",
+     "DWM-4",
+     "DWM-1",
+     "RET-8",
+     "RET-4",
+     "RET-1",
+     "RET-5",
+     "CPN-3",
+     "RET-6",
+     "PLS-2",
+     "KB-00.3",
+     "RET-7",
+     "DWM-2",
+     "REF-1",
+     "RVP-1",
+     "RVP-2",
+     "DEL-2",
+     "DEL-4",
+     "REF-5",
+     "RVP-3",
+     "RETv3-6",
+     "PLS-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "return window by category fashion"
+     },
+     {
+      "name": "search_kb",
+      "query": "festive sale extended return window"
+     },
+     {
+      "name": "search_kb",
+      "query": "reverse pickup fee change of mind Plus"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-12",
+      "days": 15,
+      "kind": "calendar",
+      "result_date": "2026-10-27",
+      "weekday": "Tuesday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "5",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aapka payment wallet se hua tha. Return ke baad item ki quality check hoti hai, phir refund initiate hota hai. Kyunki aap ZentroMart Plus member hain, refund pickup ke waqt initiate hoga, quality check ka intezaar nahi karna padega. Wallet mein refund instant aayega, 2 ghanton ke andar.",
+    "used_sections": [
+     "RET-7",
+     "REF-2",
+     "PLS-2"
+    ],
+    "key_facts": [
+     "payment method: wallet",
+     "refund initiated within 2 business days of pickup after item passes quality check",
+     "ZentroMart Plus: refund initiated at pickup, without waiting for quality check",
+     "wallet refund: instant, within 2 hours",
+     "quality check"
+    ],
+    "retrieved": [
+     "RET-7",
+     "REF-1",
+     "REF-2",
+     "DWM-2",
+     "PLS-2",
+     "REF-3",
+     "PAY-4",
+     "DEL-4",
+     "RET-6",
+     "DWM-4",
+     "PAY-3",
+     "RVP-2",
+     "CAN-2",
+     "TRK-1",
+     "MKS-2",
+     "REF-6",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "refund timeline wallet payment after pickup quality check"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC004": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "नमस्ते, मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। कृपया अपना ऑर्डर आईडी बताएं ताकि मैं आपकी मदद कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं ताकि मैं आपके ऑर्डर की जानकारी साझा कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "79363550",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "आपका ऑर्डर वेरिफाई हो गया है। ऑर्डर 79363550 डिलीवर हो चुका है, डिलीवरी 14 अक्टूबर 2026 को हुई थी। मैं आपकी और कैसे मदद कर सकता हूँ?",
+    "used_sections": [],
+    "key_facts": [
+     "order 79363550 verified",
+     "status: delivered",
+     "delivered on 14 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "79363550",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "हाँ, आप UrbanThread Slim Fit Jeans वापस कर सकती हैं। आपका ऑर्डर 6 अक्टूबर 2026 को प्लेस हुआ था, जो फेस्टिव सेल अवधि में आता है, इसलिए रिटर्न विंडो 30 दिन है जो डिलीवरी 14 अक्टूबर 2026 से शुरू होकर 13 नवंबर 2026 तक है। चेंज ऑफ माइंड रिटर्न पर रिवर्स पिकअप शुल्क ₹49 लागू होगा। आइटम अनयूज़्ड होनी चाहिए ओरिजिनल टैग्स और पैकेजिंग के साथ। आप My Orders से रिटर्न रेज़ कर सकती हैं।",
+    "used_sections": [
+     "pol_returns_v4.md",
+     "products.csv:FSH-0030"
+    ],
+    "key_facts": [
+     "30 days return window (festive sale extended, order placed between 01-15 October 2026)",
+     "Delivery date 14 October 2026",
+     "Return deadline 13 November 2026",
+     "Reverse pickup fee ₹49 for change-of-mind clothing returns (customer is not Plus)",
+     "Item must be unused with original tags and packaging",
+     "Return can be raised from My Orders"
+    ],
+    "retrieved": [
+     "RET-2",
+     "RET-9",
+     "RET-3",
+     "FAQ-2",
+     "RETv3-2",
+     "products.csv:FSH-0035",
+     "MKS-2",
+     "products.csv:FSH-0026",
+     "DWM-4",
+     "DWM-1",
+     "RET-8",
+     "RET-4",
+     "RET-1",
+     "RET-5",
+     "CPN-3",
+     "RET-6",
+     "PLS-2",
+     "KB-00.3",
+     "RET-7",
+     "DWM-2",
+     "RVP-1",
+     "RVP-2",
+     "REF-5",
+     "RVP-3",
+     "REF-1",
+     "RETv3-6",
+     "DEL-4",
+     "DEL-2",
+     "PAY-2",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "return window by category fashion"
+     },
+     {
+      "name": "search_kb",
+      "query": "festive sale extended return window"
+     },
+     {
+      "name": "search_kb",
+      "query": "reverse pickup fee change of mind"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-14",
+      "days": 30,
+      "kind": "calendar",
+      "result_date": "2026-11-13",
+      "weekday": "Friday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "5",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "वस्तु की गुणवत्ता जाँच के बाद रिफ़ंड पिकअप के 2 बिज़नेस दिन के अंदर शुरू होगा। UPI रिफ़ंड शुरू होने के बाद 1 से 3 बिज़नेस दिन में आपके खाते में आएगा। आप Plus मेंबर नहीं हैं, इसलिए रिफ़ंड पिकअप के समय नहीं, गुणवत्ता जाँच के बाद शुरू होगा। पिकअप शेड्यूल होने के बाद ही exact तारीख बताई जा सकेगी।",
+    "used_sections": [
+     "RET-7",
+     "REF-2",
+     "PLS-2"
+    ],
+    "key_facts": [
+     "Quality check must pass before refund initiation",
+     "Refund initiated within 2 business days of pickup after QC",
+     "UPI refund: 1 to 3 business days after initiation",
+     "Customer is not Plus member, so no expedited initiation at pickup"
+    ],
+    "retrieved": [
+     "RET-7",
+     "REF-1",
+     "REF-2",
+     "DWM-2",
+     "PLS-2",
+     "RVP-2",
+     "DWM-4",
+     "RET-6",
+     "RVP-3",
+     "RVP-1",
+     "DWM-1",
+     "REF-3",
+     "CAN-2",
+     "RET-2",
+     "REF-4",
+     "DEL-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "refund timeline UPI after pickup quality check"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC005": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "नमस्ते, मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। कृपया अपना ऑर्डर आईडी बताएं ताकि मैं आपकी मदद कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं ताकि मैं आपकी पहचान सत्यापित कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "37113676",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "आपका ऑर्डर वेरिफाई हो गया है। ऑर्डर 37113676 डिलीवर हो चुका है और डिलीवरी 18 जून 2026 को हुई थी। मैं आपकी और कैसे मदद कर सकता हूँ?",
+    "used_sections": [],
+    "key_facts": [
+     "order 37113676 verified",
+     "status: delivered",
+     "delivered on 18 June 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "37113676",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "जी हाँ, मैं आपकी बात एक मानव सहकर्मी से करवा रहा हूँ। आपके ऑर्डर 37113676 के लिए टिकट ID TKTcf82c4b941474e18950354eb3f3ae003 बनाया गया है। वे जल्द ही आपसे संपर्क करेंगे।",
+    "used_sections": [
+     "agent_escalation_handoff.md"
+    ],
+    "key_facts": [
+     "ticket ID: TKTcf82c4b941474e18950354eb3f3ae003",
+     "order 37113676 verified",
+     "delivered on 18 June 2026",
+     "payment method UPI",
+     "total ₹895",
+     "is_plus true",
+     "contacts_last_7_days 0"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "create_ticket",
+      "order_id": "37113676",
+      "reason": "policy_exception",
+      "created": true,
+      "ticket_id": "TKTcf82c4b941474e18950354eb3f3ae003"
+     }
+    ],
+    "ticket_ids": [
+     "TKTcf82c4b941474e18950354eb3f3ae003"
+    ]
+   }
+  ]
+ },
+ "PC006": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I am ZentroMart's AI customer-support assistant. I can help you with your order. Please share your order ID so I can look it up.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Please share either the last 4 digits of your registered phone number or the delivery pincode for order 66492475 so I can verify your order.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "66492475",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified. Order 66492475 was delivered on 6 October 2026. How can I help you with this order?",
+    "used_sections": [],
+    "key_facts": [
+     "order 66492475 verified",
+     "status: delivered",
+     "delivered on 6 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "66492475",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "A human colleague will take over your case. Your ticket ID is TKT2e6720db28b941cfb99cd2bc6c010095. They will contact you about order 66492475.",
+    "used_sections": [
+     "agent_escalation_handoff.md"
+    ],
+    "key_facts": [
+     "ticket ID TKT2e6720db28b941cfb99cd2bc6c010095",
+     "human colleague will take over",
+     "order 66492475 delivered on 6 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "create_ticket",
+      "order_id": "66492475",
+      "reason": "customer_requested_human",
+      "created": true,
+      "ticket_id": "TKT2e6720db28b941cfb99cd2bc6c010095"
+     }
+    ],
+    "ticket_ids": [
+     "TKT2e6720db28b941cfb99cd2bc6c010095"
+    ]
+   }
+  ]
+ },
+ "PC007": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI support assistant hoon. Aapke order ki help ke liye mujhe order ID chahiye. Kripya apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Verification ke liye kripya apne registered phone number ke last 4 digits ya delivery pincode mein se ek share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "45011817",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Order 45011817 shipped hai, aur promised delivery 23 October 2026 hai. Main aapki kaise madad kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order 45011817 verified",
+     "status: shipped",
+     "promised delivery: 23 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "45011817",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "Aapne is hafte isi order ke baare mein teesri baar contact kiya hai, isliye main aapko ek human colleague se connect kar raha hoon. Unka ticket ID hai TKT1b8c7b3063894f6892f2cc46d2352b34. Woh aapko jald hi contact karenge.",
+    "used_sections": [
+     "agent_escalation_handoff.md"
+    ],
+    "key_facts": [
+     "contacts_last_7_days: 2 (third contact this week)",
+     "ticket ID: TKT1b8c7b3063894f6892f2cc46d2352b34"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "create_ticket",
+      "order_id": "45011817",
+      "reason": "repeat_contact",
+      "created": true,
+      "ticket_id": "TKT1b8c7b3063894f6892f2cc46d2352b34"
+     }
+    ],
+    "ticket_ids": [
+     "TKT1b8c7b3063894f6892f2cc46d2352b34"
+    ]
+   }
+  ]
+ },
+ "PC008": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I'm ZentroMart's AI support assistant. I'd be happy to help you with your order. Please share your 8-digit order ID so I can look it up.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Please share the last 4 digits of your registered phone number or the delivery pincode for order 48196636 so I can verify your account.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "48196636",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified. Your order 48196636 was delivered on 3 October 2026. How can I help you today?",
+    "used_sections": [],
+    "key_facts": [
+     "order 48196636 verified",
+     "status: delivered",
+     "delivered on 3 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "48196636",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "I understand this is the third time you're contacting us about order 48196636 this week. A human colleague will take over your case. Your ticket ID is TKT315bf02480ff4e888342c6c7b66cf756.",
+    "used_sections": [],
+    "key_facts": [
+     "ticket ID: TKT315bf02480ff4e888342c6c7b66cf756",
+     "repeat contact within 7 days",
+     "human colleague will take over"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "create_ticket",
+      "order_id": "48196636",
+      "reason": "repeat_contact",
+      "created": true,
+      "ticket_id": "TKT315bf02480ff4e888342c6c7b66cf756"
+     }
+    ],
+    "ticket_ids": [
+     "TKT315bf02480ff4e888342c6c7b66cf756"
+    ]
+   }
+  ]
+ },
+ "PC009": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "नमस्ते, मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। कृपया अपना ऑर्डर आईडी बताएं ताकि मैं आपकी मदद कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं ताकि मैं आपकी पहचान सत्यापित कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "67830826",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "आपका ऑर्डर 67830826 वेरिफाई हो गया है और आपका रिटर्न पिकअप 20 अक्टूबर 2026 को हो चुका है। मैं आपकी और कैसे मदद कर सकता हूँ?",
+    "used_sections": [],
+    "key_facts": [
+     "ऑर्डर 67830826 वेरिफाई हो गया है",
+     "रिटर्न पिकअप 20 अक्टूबर 2026 को हो चुका है"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "67830826",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "आपका रिफ़ंड ₹31,809 UPI पर आएगा। वस्तु की गुणवत्ता जाँच के बाद रिफ़ंड पिकअप के 2 बिज़नेस दिनों के अंदर शुरू होगा, और UPI पर पहुंचने में 1 से 3 बिज़नेस दिन लगेंगे। यह 26 अक्टूबर 2026 तक आ जाना चाहिए।",
+    "used_sections": [
+     "pol_returns_v4.md",
+     "pol_refunds.md",
+     "00_about_this_knowledge_base.md"
+    ],
+    "key_facts": [
+     "₹31,809 refund to UPI",
+     "Quality check required before refund initiation",
+     "Refund initiated within 2 business days of pickup",
+     "UPI: 1 to 3 business days after initiation",
+     "By 26 October 2026"
+    ],
+    "retrieved": [
+     "RET-7",
+     "REF-2",
+     "REF-1",
+     "KB-00.3",
+     "RVP-2",
+     "DWM-2",
+     "RET-2",
+     "REF-3",
+     "DEL-1",
+     "PLS-2",
+     "DWM-4",
+     "PAY-3",
+     "RET-8",
+     "RET-6",
+     "RET-3",
+     "DWM-1",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "refund timeline after pickup quality check UPI business days"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-20",
+      "days": 2,
+      "kind": "business",
+      "result_date": "2026-10-22",
+      "weekday": "Thursday",
+      "already_passed": false
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-22",
+      "days": 3,
+      "kind": "business",
+      "result_date": "2026-10-26",
+      "weekday": "Monday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC010": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI customer-support assistant hoon. Aapke order ki help ke liye mujhe aapka order ID chahiye. Kripya apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Kripya apne registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapka order verify kar saku.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "16640894",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Main ne aapka order verify kar liya hai. Order 16640894 return_refund_initiated status mein hai aur iska refund 20 July 2026 ko initiate hua tha. Main aapki aur kaise help kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order_id: 16640894",
+     "verified: true",
+     "status: return_refund_initiated",
+     "refund initiated on: 20 July 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "16640894",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "escalate",
+    "reply": "Aapka refund ₹2,480 UPI ke through 20 July 2026 ko initiate hua tha. UPI ke liye policy timeline 1 se 3 business days hai, jo 23 July 2026 tak complete hona chahiye tha. Aapka RRN 315633825001 hai. Kyunki refund abhi tak nahi aaya, maine ek ticket banaya hai (TKTf4de0113aa6e44cd9871f8d105a2d885) aur ek human colleague aapki help karenge.",
+    "used_sections": [
+     "pol_refunds.md:REF-2",
+     "pol_returns_v4.md:RET-7",
+     "00_about_this_knowledge_base.md:KB-00.3"
+    ],
+    "key_facts": [
+     "₹2,480 refund via UPI",
+     "Refund initiated on 20 July 2026",
+     "UPI timeline 1 to 3 business days, due by 23 July 2026",
+     "RRN: 315633825001",
+     "Ticket ID: TKTf4de0113aa6e44cd9871f8d105a2d885",
+     "Human colleague will take over"
+    ],
+    "retrieved": [
+     "RET-7",
+     "REF-2",
+     "REF-1",
+     "KB-00.3",
+     "RVP-2",
+     "DWM-2",
+     "REF-3",
+     "RET-2",
+     "PLS-2",
+     "DEL-1",
+     "DWM-4",
+     "PAY-3",
+     "RET-8",
+     "DWM-1",
+     "RET-6",
+     "RET-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "refund timeline UPI business days after pickup quality check"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-07-20",
+      "days": 3,
+      "kind": "business",
+      "result_date": "2026-07-23",
+      "weekday": "Thursday",
+      "already_passed": true
+     },
+     {
+      "name": "create_ticket",
+      "order_id": "16640894",
+      "reason": "overdue_refund",
+      "created": true,
+      "ticket_id": "TKTf4de0113aa6e44cd9871f8d105a2d885"
+     }
+    ],
+    "ticket_ids": [
+     "TKTf4de0113aa6e44cd9871f8d105a2d885"
+    ]
+   }
+  ]
+ },
+ "PC011": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I'm ZentroMart's AI customer-support assistant. To check your order status, please share your 8-digit order ID.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Please share the last 4 digits of your registered phone number or your delivery pincode so I can verify your order.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "26295015",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified, Manish. Your order 26295015 is shipped and is promised for delivery by 22 October 2026. How can I help you?",
+    "used_sections": [],
+    "key_facts": [
+     "order 26295015 verified",
+     "status: shipped",
+     "promised delivery: 22 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "26295015",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "If you are not at home, the courier will make up to 3 delivery attempts. After each failed attempt you will get an SMS to reschedule. You can also refuse the parcel at the door; since your order is cash on delivery, nothing will be charged. If all 3 attempts fail, the parcel is returned to our warehouse.",
+    "used_sections": [
+     "pol_delivery_shipping.md:DEL-3",
+     "pol_cancellations.md:CAN-2"
+    ],
+    "key_facts": [
+     "Courier makes up to 3 delivery attempts",
+     "After a failed attempt, customer gets an SMS to reschedule",
+     "If the third attempt fails, the parcel is returned to the warehouse (return to origin)",
+     "For cash-on-delivery orders, refusing the parcel at the door means nothing is charged"
+    ],
+    "retrieved": [
+     "DEL-3",
+     "REF-1",
+     "CAN-2",
+     "PLS-2",
+     "RVP-3",
+     "RET-2",
+     "REF-3",
+     "TRK-1",
+     "IDV-3",
+     "CAN-3",
+     "RVP-2",
+     "DEL-1",
+     "RET-7",
+     "RVP-1",
+     "TRK-2",
+     "PAY-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "customer not at home delivery attempt reschedule redelivery"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC012": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I'm ZentroMart's AI support assistant. To check your order status, please share your 8-digit order ID.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Please share the last 4 digits of your registered phone number or the delivery pincode for order 75447568 so I can verify and check your order status.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "75447568",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified. Your order 75447568 is shipped and promised for delivery by 24 October 2026. How can I help you further?",
+    "used_sections": [],
+    "key_facts": [
+     "order 75447568 verified",
+     "status: shipped",
+     "promised delivery date: 24 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "75447568",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "The courier will make up to 3 delivery attempts for your order, promised by 24 October 2026. After a failed attempt you will get an SMS to reschedule. If all 3 attempts fail, the parcel goes back to the warehouse. Since your order is cash on delivery, nothing will be charged if you refuse it at the door.",
+    "used_sections": [
+     "pol_delivery_shipping.md",
+     "pol_cancellations.md",
+     "pol_refunds.md"
+    ],
+    "key_facts": [
+     "Courier makes up to 3 delivery attempts",
+     "SMS sent to reschedule after a failed attempt",
+     "Parcel returned to warehouse if the third attempt fails",
+     "Cash-on-delivery order: nothing charged if refused at the door",
+     "Promised delivery date: 24 October 2026"
+    ],
+    "retrieved": [
+     "DEL-3",
+     "REF-1",
+     "CAN-2",
+     "PLS-2",
+     "RVP-3",
+     "RET-2",
+     "REF-3",
+     "TRK-1",
+     "IDV-3",
+     "CAN-3",
+     "RVP-2",
+     "DEL-1",
+     "RET-7",
+     "RVP-1",
+     "TRK-2",
+     "PAY-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "customer not at home delivery attempt reschedule redelivery"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC013": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI customer-support assistant hoon. Aapke order ki help ke liye mujhe aapka order ID chahiye. Kripya apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya apne registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapki identity verify kar sakun.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "86152121",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 86152121 delivered hai, delivery date 15 October 2026 thi. Main aapki aur kis baare mein help kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order 86152121 verified",
+     "status: delivered",
+     "delivered on 15 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "86152121",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Nahi, ek order mein sirf 1 coupon lagaya ja sakta hai. Coupons combine nahi kiye ja sakte, order place hone ke baad nahi jode ja sakte, aur cash ke liye exchange nahi kiye ja sakte.",
+    "used_sections": [
+     "pol_coupons_offers.md"
+    ],
+    "key_facts": [
+     "Only 1 coupon can be applied per order",
+     "Coupons cannot be combined",
+     "Coupons cannot be added after the order is placed",
+     "Coupons cannot be exchanged for cash"
+    ],
+    "retrieved": [
+     "CPN-1",
+     "REF-4",
+     "CAN-4",
+     "CPN-2",
+     "CPN-3",
+     "CAN-1",
+     "REF-5",
+     "CAN-2",
+     "IDV-3",
+     "PAY-2",
+     "ESC-1",
+     "REF-1",
+     "DWM-2",
+     "DEL-1",
+     "IDV-1",
+     "REF-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-2",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "coupon multiple coupons one order policy"
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "5",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aapka order 86152121 9 October 2026 ko ship hua tha. Delivery 15 October 2026 ko ho gayi thi.",
+    "used_sections": [],
+    "key_facts": [
+     "Order 86152121 shipped on 9 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC014": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I'm ZentroMart's AI support assistant. I'd be happy to help you with your order. Could you please share your 8-digit order ID?",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Thank you for sharing your order ID. To verify your order, please provide either the last 4 digits of your registered phone number or the delivery pincode for this order.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "10048947",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified. Your order 10048947 is delivered, delivered on 14 October 2026. How can I help you today?",
+    "used_sections": [],
+    "key_facts": [
+     "order ID 10048947 verified",
+     "status: delivered",
+     "delivered on 14 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "10048947",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "No, you cannot use two coupons on one order. Only 1 coupon can be applied per order, and coupons cannot be combined, added after the order is placed, or exchanged for cash.",
+    "used_sections": [
+     "pol_coupons_offers.md:CPN-1"
+    ],
+    "key_facts": [
+     "Only 1 coupon can be applied per order",
+     "Coupons cannot be combined",
+     "Coupons cannot be added after the order is placed",
+     "Coupons cannot be exchanged for cash"
+    ],
+    "retrieved": [
+     "CPN-1",
+     "CAN-4",
+     "CPN-2",
+     "REF-4",
+     "CPN-3",
+     "CAN-1",
+     "REF-5",
+     "CAN-2",
+     "IDV-3",
+     "ESC-1",
+     "PAY-2",
+     "REF-1",
+     "IDV-1",
+     "DWM-2",
+     "REF-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-2",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "coupon policy multiple coupons one order"
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "5",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Your order 10048947 was shipped on 8 October 2026.",
+    "used_sections": [],
+    "key_facts": [
+     "order 10048947 shipped on 8 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC015": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI customer-support assistant hoon. Aapke order ki help ke liye mujhe order ID chahiye. Kripya apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Verification ke liye kripya apne registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "84889113",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 84889113 delivered hua tha 29 June 2026 ko aur ab iska return aur refund complete ho chuka hai. Main aapki aur kisi cheez mein kaise madad kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order 84889113 verified",
+     "status: returned_refunded",
+     "delivered on 29 June 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "84889113",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "Maaf kijiye, aapko ₹300 ka voucher nahi mil sakta. Aapka order Standard delivery tha, aur Standard delivery ke liye late delivery par koi compensation nahi hai. Main koi anya compensation offer nahi kar sakta.",
+    "used_sections": [
+     "pol_delivery_shipping.md"
+    ],
+    "key_facts": [
+     "No compensation for late Standard deliveries",
+     "Agents must not offer any other compensation",
+     "₹300 voucher requested",
+     "Order was Standard delivery, promised 26 June 2026, delivered 29 June 2026"
+    ],
+    "retrieved": [
+     "DEL-4",
+     "REF-5",
+     "DWM-1",
+     "DWM-2",
+     "DEL-3",
+     "CAN-3",
+     "REF-1",
+     "PLS-2",
+     "DWM-3",
+     "PAY-3",
+     "PAY-2",
+     "TRK-1",
+     "RET-6",
+     "DEL-1",
+     "CAN-2",
+     "DWM-4",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "late delivery compensation voucher"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC016": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI support assistant hoon. Aapke order ke baare mein help ke liye mujhe aapka 8-digit order ID chahiye. Kripya order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapki identity verify kar saku.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "31171629",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Verify ho gaya hai. Aapka order 31171629 delivered hai aur uski delivery date 29 September 2026 thi. Main aapki kaise help kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order 31171629 verified",
+     "status: delivered",
+     "delivered_on: 29 September 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "31171629",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "Maaf kijiye, Standard delivery ke late hone par koi voucher ya compensation nahi diya jata. Aapka order Standard delivery tha, isliye ₹300 ka voucher possible nahi hai. Policy ke mutabik late Standard delivery ke liye koi compensation nahi milta.",
+    "used_sections": [
+     "pol_delivery_shipping.md:DEL-4"
+    ],
+    "key_facts": [
+     "No compensation for late Standard deliveries",
+     "Order delivery type: Standard",
+     "Agents must not offer any other compensation"
+    ],
+    "retrieved": [
+     "DEL-4",
+     "REF-5",
+     "CAN-3",
+     "TRK-1",
+     "PAY-3",
+     "REF-1",
+     "CAN-2",
+     "TRK-2",
+     "DWM-1",
+     "DEL-1",
+     "CAN-4",
+     "PAY-2",
+     "DEL-3",
+     "DEL-6",
+     "DWM-2",
+     "CAN-1",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "late delivery compensation voucher delayed order"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC017": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI support assistant hoon. Aapke order ki help ke liye mujhe aapka 8-digit order ID chahiye. Kripya order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya aapka registered phone number ke last 4 digits ya delivery pincode share karein taaki main verify kar sakoon.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "35061733",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 35061733 placed hai aur uski promised delivery 27 October 2026 hai. Main aapki kaise madad kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order_id: 35061733",
+     "status: placed",
+     "promised delivery date: 27 October 2026",
+     "verified: true"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "35061733",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aapka order 35061733 abhi \"placed\" status mein hai, isliye ise free mein cancel kiya ja sakta hai. Aap My Orders app se cancel karein; main khud order cancel nahi kar sakta. Refund immediately initiate hoga aur UPI par 1 to 3 business days mein aayega, by 23 October 2026.",
+    "used_sections": [
+     "pol_cancellations.md",
+     "pol_refunds.md"
+    ],
+    "key_facts": [
+     "Order 35061733 status: placed (not shipped)",
+     "Cancellation free of charge until the order is shipped",
+     "Customer cancels from My Orders in the app; support assistant cannot cancel orders itself",
+     "Refund initiated immediately on cancellation",
+     "Payment method: UPI",
+     "UPI refund timeline: 1 to 3 business days after initiation",
+     "Refund by 23 October 2026"
+    ],
+    "retrieved": [
+     "CAN-1",
+     "CAN-2",
+     "CAN-3",
+     "REF-1",
+     "REF-2",
+     "PAY-3",
+     "RET-7",
+     "RET-8",
+     "TRK-1",
+     "REF-4",
+     "CAN-4",
+     "REF-3",
+     "PLS-3",
+     "REF-5",
+     "DEL-4",
+     "TRK-2",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "cancel placed order refund timeline My Orders"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-20",
+      "days": 3,
+      "kind": "business",
+      "result_date": "2026-10-23",
+      "weekday": "Friday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC018": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI customer-support assistant hoon. Aapke order ki help ke liye, please apna 8-digit order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya apne registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapki identity verify kar sakun.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "26403404",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 26403404 packed hai, jise 20 October 2026 ko place kiya gaya tha aur promised delivery 27 October 2026 hai. Main aapki aur kaise help kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order ID 26403404 verified",
+     "status: packed",
+     "placed on 20 October 2026",
+     "promised delivery by 27 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "26403404",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Maaf kijiye, main order khud cancel nahi kar sakta. Aap My Orders app mein jaakar order 26403404 free mein cancel kar sakte hain kyunki ye abhi packed hai, shipped nahi. Refund turant initiate hoga. Net banking se paise 3 se 5 business days mein wapas aayenge, yani 26 October 2026 tak.",
+    "used_sections": [
+     "pol_cancellations.md",
+     "pol_refunds.md"
+    ],
+    "key_facts": [
+     "Order 26403404 is packed, not shipped",
+     "Cancellation is free of charge until the order ships",
+     "Customer must cancel from My Orders in the app; the support assistant cannot cancel orders itself",
+     "Refund is initiated immediately on cancellation",
+     "Net banking refund timeline: 3 to 5 business days",
+     "Refund will reach by 26 October 2026"
+    ],
+    "retrieved": [
+     "CAN-1",
+     "CAN-2",
+     "REF-1",
+     "RET-7",
+     "PLS-3",
+     "CAN-4",
+     "TRK-1",
+     "CAN-3",
+     "REF-2",
+     "REF-5",
+     "REF-4",
+     "PAY-3",
+     "DWM-2",
+     "KB-00.2",
+     "PLS-2",
+     "KB-00.3",
+     "KB-00.1",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "cancel packed order refund timeline"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-20",
+      "days": 5,
+      "kind": "business",
+      "result_date": "2026-10-26",
+      "weekday": "Monday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC019": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! Main ZentroMart ka AI customer-support assistant hoon. Aapke order ki help ke liye mujhe aapka 8-digit order ID chahiye. Kripya order ID share karein.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Order ID mil gaya. Kripya registered phone number ke last 4 digits ya delivery pincode mein se koi ek share karein taaki main aapki identity verify kar sakun.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "15911102",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Aap verify ho gaye hain. Aapka order 15911102 shipped hai, jise 20 October 2026 ko ship kiya gaya tha. Main aapki kaise madad kar sakta hoon?",
+    "used_sections": [],
+    "key_facts": [
+     "order 15911102 verified",
+     "status: shipped",
+     "shipped on 20 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "15911102",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "Maaf kijiye, aapka order 15911102 ship ho chuka hai, isliye ise cancel nahi kiya ja sakta. Aap delivery ke time parcel refuse kar sakte hain; prepaid order hone par refund parcel warehouse wapas aane ke baad shuru hoga, usually 7 to 10 calendar days. Ya delivery accept karke item ko delivery ke 10 calendar days ke andar return karein (home_kitchen category). Return ke baad item ki quality check ke baad refund 2 business days ke andar initiate hoga. Is item par koi reverse pickup fee nahi hai.",
+    "used_sections": [
+     "pol_cancellations.md",
+     "pol_refunds.md",
+     "pol_returns_v4.md"
+    ],
+    "key_facts": [
+     "Order 15911102 is shipped and cannot be cancelled (CAN-2)",
+     "Alternative: refuse the parcel at the door; for prepaid orders refund starts once the parcel reaches the warehouse, usually 7 to 10 calendar days after the last delivery attempt (REF-1)",
+     "Alternative: accept delivery and return the item within 10 calendar days from the delivery date (home_kitchen category, RET-2)",
+     "Refund is initiated after the item passes the quality check, within 2 business days of pickup (REF-1, RET-7)",
+     "No reverse pickup fee for this item; ₹49 fee applies only to change-of-mind returns of clothing, footwear and bags (RET-6)"
+    ],
+    "retrieved": [
+     "RET-6",
+     "RET-2",
+     "PLS-2",
+     "MKS-2",
+     "DWM-2",
+     "RET-5",
+     "RET-7",
+     "RVP-1",
+     "RET-3",
+     "RET-9",
+     "RVP-3",
+     "RETv3-6",
+     "RVP-2",
+     "RETv3-2",
+     "FAQ-2",
+     "REF-5",
+     "CAN-2",
+     "CAN-1",
+     "REF-1",
+     "DEL-6",
+     "DEL-3",
+     "CAN-3",
+     "TRK-1",
+     "CAN-4",
+     "DEL-1",
+     "DEL-4",
+     "REF-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "return window by category home_kitchen reverse pickup fee change of mind"
+     },
+     {
+      "name": "search_kb",
+      "query": "cancel shipped order refuse delivery return after delivery"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC020": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I am ZentroMart's AI support assistant. I'd be happy to help you with your order. Could you please share your 8-digit order ID?",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Thank you. To verify your order, please share either the last 4 digits of your registered phone number or the delivery pincode for this order.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "43165903",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified, Harsh. Your order 43165903 is shipped and is promised for delivery on 21 October 2026. How can I help you with it?",
+    "used_sections": [],
+    "key_facts": [
+     "order 43165903 verified",
+     "status: shipped",
+     "promised delivery: 21 October 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "43165903",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "Sorry, cancellation is not possible because your order 43165903 has already shipped and is promised for delivery on 21 October 2026. You can refuse the parcel at delivery, or return it after delivery: fashion items (tote bag, jeans) can be returned within 30 days of delivery by 20 November 2026, and the TV within 7 days by 28 October 2026. A ₹49 reverse pickup fee applies to change-of-mind fashion returns since you are not a Plus member. After the item passes the quality check, the refund is initiated within 2 business days of pickup and takes 5 to 7 business days to reach your card.",
+    "used_sections": [
+     "pol_returns_v4.md:RET-2",
+     "pol_returns_v4.md:RET-6",
+     "pol_returns_v4.md:RET-7",
+     "pol_returns_v4.md:RET-8",
+     "pol_refunds.md:REF-1",
+     "pol_refunds.md:REF-2",
+     "products.csv:FSH-0037",
+     "products.csv:ELE-0021",
+     "products.csv:FSH-0029",
+     "00_about_this_knowledge_base.md:KB-00.3"
+    ],
+    "key_facts": [
+     "Order 43165903 status: shipped, promised delivery 21 October 2026",
+     "Cancellation not possible because the order has already shipped",
+     "Fashion items (tote bag, jeans): festive sale extension applies (order placed 13 October 2026), return window 30 days from delivery, deadline 20 November 2026",
+     "Electronics (TV): return window 7 days from delivery, deadline 28 October 2026",
+     "Reverse pickup fee ₹49 for change-of-mind fashion returns; customer is not a Plus member",
+     "Refund initiated within 2 business days of pickup after item passes quality check; card refund takes 5 to 7 business days"
+    ],
+    "retrieved": [
+     "RET-6",
+     "RET-2",
+     "DWM-2",
+     "PLS-2",
+     "MKS-2",
+     "RET-3",
+     "RVP-1",
+     "RET-9",
+     "RETv3-6",
+     "RETv3-2",
+     "RET-7",
+     "RVP-3",
+     "RVP-2",
+     "FAQ-2",
+     "DWM-4",
+     "products.csv:FSH-0026",
+     "REF-2",
+     "REF-1",
+     "REF-3",
+     "KB-00.3",
+     "RET-8",
+     "DEL-1",
+     "PAY-3",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "return window by category fashion electronics reverse pickup fee"
+     },
+     {
+      "name": "search_kb",
+      "query": "refund timeline after return pickup business days"
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-21",
+      "days": 30,
+      "kind": "calendar",
+      "result_date": "2026-11-20",
+      "weekday": "Friday",
+      "already_passed": false
+     },
+     {
+      "name": "date_calc",
+      "start_date": "2026-10-21",
+      "days": 7,
+      "kind": "calendar",
+      "result_date": "2026-10-28",
+      "weekday": "Wednesday",
+      "already_passed": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC021": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "नमस्ते! मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। कृपया अपना ऑर्डर आईडी बताएं ताकि मैं आपकी मदद कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं ताकि मैं आपका ऑर्डर वेरिफाई कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "77461439",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "विवरण मेल नहीं खाए। कृपया दोबारा अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं। एक और प्रयास बचा है।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "77461439",
+      "verification": true,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "क्षमा करें, मैं ऑर्डर विवरण साझा नहीं कर सकता। कृपया अपने पंजीकृत फोन नंबर से सपोर्ट से संपर्क करें। सामान्य नीति प्रश्नों में मैं आपकी मदद कर सकता हूँ।",
+    "used_sections": [
+     "IDV-3"
+    ],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "77461439",
+      "verification": true,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC022": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "नमस्ते, मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। कृपया अपना ऑर्डर आईडी बताएं ताकि मैं आपकी मदद कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड बताएं ताकि मैं आपका ऑर्डर वेरिफाई कर सकूं।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "56646891",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "विवरण मेल नहीं खाए। कृपया अपने रजिस्टर्ड फोन नंबर के अंतिम 4 अंक या डिलीवरी पिनकोड के साथ दोबारा प्रयास करें। एक और प्रयास बचा है।",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "56646891",
+      "verification": true,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "refuse",
+    "reply": "क्षमा करें, मैं ऑर्डर विवरण साझा नहीं कर सकता। कृपया अपने पंजीकृत फोन नंबर से सपोर्ट से संपर्क करें। सामान्य नीति संबंधी प्रश्नों में मैं आपकी मदद कर सकता हूँ।",
+    "used_sections": [
+     "IDV-3"
+    ],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "56646891",
+      "verification": true,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC023": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello, I am ZentroMart's AI support assistant. Please share your 8-digit order ID so I can look up your order and help you.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Please share either the last 4 digits of your registered phone number or the delivery pincode for order 22354022 so I can verify your account.",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "22354022",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified for order 22354022, which was delivered on 17 September 2026. How can I help you?",
+    "used_sections": [],
+    "key_facts": [
+     "Order 22354022 verified",
+     "status: delivered",
+     "delivered on 17 September 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "22354022",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Yes. Since your Express delivery arrived after the promised date, the ₹79 express fee is credited to your ZentroMart Wallet automatically within 48 hours. You are not a Plus member, so you are eligible. The ₹79 was already credited to your wallet on 18 September 2026.",
+    "used_sections": [
+     "pol_delivery_shipping.md:DEL-4"
+    ],
+    "key_facts": [
+     "Express delivery late: ₹79 express fee credited to ZentroMart Wallet automatically within 48 hours (DEL-4)",
+     "Customer is not a Plus member, so eligible for the credit",
+     "Order delivered 17 September 2026, promised 15 September 2026",
+     "₹79 already credited to wallet on 18 September 2026 (order record)"
+    ],
+    "retrieved": [
+     "DEL-4",
+     "PLS-2",
+     "REF-5",
+     "DWM-2",
+     "REF-3",
+     "CAN-2",
+     "REF-1",
+     "DEL-2",
+     "RET-6",
+     "DEL-1",
+     "DEL-3",
+     "REF-2",
+     "PAY-4",
+     "PAY-3",
+     "DEL-5",
+     "PAY-2",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "express delivery late delivery fee credit refund"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ },
+ "PC024": {
+  "llm_status": "success",
+  "turns": [
+   {
+    "turn": "1",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Hello! I am ZentroMart's AI support assistant. I can help you with your order. Could you please share your 8-digit order ID?",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [],
+    "ticket_ids": []
+   },
+   {
+    "turn": "2",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "clarify",
+    "reply": "Thank you. Could you please share either the last 4 digits of your registered phone number or the delivery pincode for this order so I can verify it?",
+    "used_sections": [],
+    "key_facts": [],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "58634590",
+      "verification": false,
+      "verified": false
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "3",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "You are verified, Gaurav. Your order 58634590 is delivered, delivered on 28 September 2026. How can I help you today?",
+    "used_sections": [],
+    "key_facts": [
+     "order 58634590 verified",
+     "status: delivered",
+     "delivered on 28 September 2026"
+    ],
+    "retrieved": [
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "lookup_order",
+      "order_id": "58634590",
+      "verification": true,
+      "verified": true
+     }
+    ],
+    "ticket_ids": []
+   },
+   {
+    "turn": "4",
+    "llm_ok": true,
+    "json_ok": true,
+    "error": null,
+    "decision": "answer",
+    "reply": "Yes, Gaurav. Since your Express order was delivered after the promised date, the ₹79 express fee is credited to your ZentroMart Wallet automatically within 48 hours. The credit of ₹79 has already been added to your Wallet on 29 September 2026.",
+    "used_sections": [
+     "pol_delivery_shipping.md:DEL-4"
+    ],
+    "key_facts": [
+     "Late Express delivery: ₹79 express fee credited to ZentroMart Wallet automatically within 48 hours (DEL-4)",
+     "Credit already applied: ₹79 on 29 September 2026 (order record)",
+     "Customer is not a Plus member, so eligible for the credit"
+    ],
+    "retrieved": [
+     "DEL-4",
+     "PLS-2",
+     "REF-5",
+     "DWM-2",
+     "RET-6",
+     "DEL-1",
+     "REF-1",
+     "REF-3",
+     "CAN-2",
+     "REF-2",
+     "DEL-3",
+     "RET-7",
+     "DEL-2",
+     "REF-4",
+     "PAY-4",
+     "DEL-5",
+     "KB-00.1",
+     "KB-00.2",
+     "KB-00.3",
+     "KB-00.4",
+     "STY-1",
+     "STY-2",
+     "STY-3",
+     "STY-4",
+     "STY-5",
+     "ESC-1",
+     "ESC-2",
+     "ESC-3",
+     "ESC-4",
+     "IDV-1",
+     "IDV-2",
+     "IDV-3",
+     "IDV-4",
+     "DWM-3",
+     "DWM-5"
+    ],
+    "tool_calls": [
+     {
+      "name": "search_kb",
+      "query": "express delivery late credit fee refund policy"
+     }
+    ],
+    "ticket_ids": []
+   }
+  ]
+ }
+}

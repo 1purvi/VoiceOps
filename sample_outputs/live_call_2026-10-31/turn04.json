@@ -1,0 +1,97 @@
+{
+ "audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn04.customer.wav",
+ "reply_audio": "/Users/purvidharmana/Desktop/DataScience/VoiceOps/outputs/live_calls/20261031_133215/turn04.reply.wav",
+ "error": null,
+ "transcript": "क्या मैं काफी रनिंग सीकर्स रिटर्न कर सकती हूँ?",
+ "stt_language": "hi-IN",
+ "stt_model": "prisma-v3.0",
+ "stt_s": 3.7,
+ "tts_language": "hi-IN",
+ "reply": "हाँ, आप Kaafi Running Sneakers रिटर्न कर सकती हैं। डिलीवरी 12 अक्टूबर 2026 को हुई थी और फैशन कैटेगरी के लिए रिटर्न विंडो 15 दिन (कैलेंडर दिन) है, जो 27 अक्टूबर 2026 तक खत्म होगी। आइटम अप्रयुक्त होना चाहिए और मूल टैग व पैकेजिंग के साथ होना चाहिए, और ZentroMart Plus सदस्य होने के कारण रिवर्स पिकअप शुल्क ₹49 माफ है।",
+ "spoken_text": "हाँ, आप Kaafi Running Sneakers रिटर्न कर सकती हैं। डिलीवरी 12 अक्टूबर 2026 को हुई थी और फैशन कैटेगरी के लिए रिटर्न विंडो 15 दिन (कैलेंडर दिन) है, जो 27 अक्टूबर 2026 तक खत्म होगी। आइटम अप्रयुक्त होना चाहिए और मूल टैग व पैकेजिंग के साथ होना चाहिए, और ZentroMart Plus सदस्य होने के कारण रिवर्स पिकअप शुल्क 49 रुपये माफ है।",
+ "decision": "answer",
+ "unclear_audio": false,
+ "used_sections": [
+  "pol_returns_v4.md:RET-2",
+  "pol_returns_v4.md:RET-4",
+  "pol_returns_v4.md:RET-6",
+  "pol_plus_membership.md:PLS-2",
+  "products.csv:FSH-0033"
+ ],
+ "retrieved": [
+  "RET-2",
+  "RET-9",
+  "RET-3",
+  "FAQ-2",
+  "RETv3-2",
+  "products.csv:FSH-0035",
+  "MKS-2",
+  "products.csv:FSH-0026",
+  "DWM-4",
+  "DWM-1",
+  "RET-8",
+  "RET-4",
+  "RET-1",
+  "RET-5",
+  "CPN-3",
+  "RET-6",
+  "PLS-2",
+  "KB-00.3",
+  "RET-7",
+  "DWM-2",
+  "REF-1",
+  "RVP-1",
+  "RVP-2",
+  "DEL-2",
+  "DEL-4",
+  "REF-5",
+  "RVP-3",
+  "RETv3-6",
+  "PLS-3",
+  "KB-00.1",
+  "KB-00.2",
+  "KB-00.4",
+  "STY-1",
+  "STY-2",
+  "STY-3",
+  "STY-4",
+  "STY-5",
+  "ESC-1",
+  "ESC-2",
+  "ESC-3",
+  "ESC-4",
+  "IDV-1",
+  "IDV-2",
+  "IDV-3",
+  "IDV-4",
+  "DWM-3",
+  "DWM-5"
+ ],
+ "chunks": [
+  {
+   "id": "products.csv:FSH-0033",
+   "title": "Kaafi Running Sneakers, White",
+   "source": "products.csv",
+   "text": "SKU FSH-0033: Kaafi Running Sneakers, White by Kaafi. Return category fashion. Price ₹2799. Fulfilled by Shree Traders. Assured badge: False. Warranty 0 months. Kaafi Running Sneakers, White. Sold on ZentroMart. Ships from a marketplace seller."
+  }
+ ],
+ "tool_calls": [
+  {
+   "name": "search_kb",
+   "query": "return window by category fashion"
+  },
+  {
+   "name": "search_kb",
+   "query": "festive sale extended return window"
+  },
+  {
+   "name": "search_kb",
+   "query": "reverse pickup fee change of mind Plus"
+  },
+  {
+   "name": "date_calc"
+  }
+ ],
+ "seconds": 34.4,
+ "file": "turn04.customer.wav"
+}

@@ -1,0 +1,470 @@
+{
+ "PQ0002": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ki AI customer-support assistant hun. Mere paas SKU ELE-0012 ki product details nahi hain, isliye main confirm nahi kar sakta ki yeh ZentroMart Assured hai ya claim kaise karein. Main aapko ek human colleague se connect karwa sakta hun, bataiye ki aap chahte hain?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0003": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have that information about refund timing to the ZentroMart Wallet. I can connect you with a human colleague who can help.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0004": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have information about scheduling deliveries at midnight. I can connect you with a human colleague who can help with delivery scheduling.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0005": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ka AI assistant hoon. Mere paas SKU ELE-0002 ka product detail ya ZentroMart Assured policy nahi hai, isliye main yeh nahi bata sakta ki yeh Assured hai ya claim kaise karein. Main aapko ek manav support colleague se connect kar sakta hoon.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0006": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have that information about pickup fees for returning shoes you do not like as a ZentroMart Plus member. Would you like me to connect you with a human colleague who can check?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0008": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ki AI customer-support assistant hoon. Mere paas credit card refund ke exact timeline ki information nahi hai ki 17 October 2026 ko shuru hua refund kab tak aa jayega. Main aapko ek human colleague se connect karwa sakta hoon jo yeh bata payega ki refund kab tak aayega.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0009": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have information about a student discount. Would you like me to connect you with a human colleague who can help?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0010": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I don't have that information about whether collection is free for torn UrbanThread Slim Fit Jeans. I can connect you to a human colleague who can check the policy for you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0013": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं ZentroMart की AI ग्राहक-सहायता सहायक हूं। मुझे खुली हुई Gulmohar Matte Lipstick की वापसी नीति के बारे में जानकारी नहीं है। क्या आप चाहेंगी कि मैं आपकी बात एक मानव सहकर्मी से कराऊं जो आपकी मदद कर सके?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0014": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं ZentroMart का AI सहायक हूँ। मुझे Pagecraft A5 Ruled Notebook (Pack of 4) लौटाने की निर्धारित अवधि के बारे में जानकारी नहीं है। क्या मैं आपको एक मानव सहयोगी से जोड़ दूँ?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0015": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ki AI customer support assistant hoon. Bulk order pe GST invoice milega ya nahi, iske baare mein mere paas koi jankari nahi hai. Main aapko ek human colleague se connect karwa sakta hoon jo sahi batayenge.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0016": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "answer",
+  "reply": "I am an AI assistant for ZentroMart. Opened personal care items such as perfume cannot be returned once the seal is broken or the product has been used, for hygiene reasons. Since you tried the Neelam Eau de Parfum 50 ml once, it cannot be returned. You can ask to be connected to a human colleague if you need further help.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0018": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "clarify",
+  "reply": "कृपया बताएं कि आप किस उत्पाद या ऑर्डर को वापस करना चाहते हैं। वापसी की अवधि उत्पाद की कैटेगरी पर निर्भर करती है। कृपया अपना ऑर्डर आइडम या उत्पाद का नाम बताएं।",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0019": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have the return policy details for your Orbix Fit 3 Pro Smartwatch, so I cannot tell you the return window for a delivery on 20 July 2026. I can connect you with a human colleague who can look this up for you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0020": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मुझे इस बारे में जानकारी नहीं है। मैं ZentroMart का AI असिस्टेंट हूँ। क्या मैं आपकी बात किसी मानव सहकर्मी से करा दूँ?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0021": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I do not have that information. Would you like me to connect you with a human colleague who can help with courier delivery details?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0022": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have that information about credit card refund timelines. I can connect you to a human colleague who can check when your refund started on 17 October 2026 should reach your account.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0023": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have access to your account or order details, so I cannot review this order myself. You are reporting an order you did not place, which a human colleague needs to investigate. I can connect you with a support agent who can check your account and help secure it.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0024": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have that information about the return window for the Rangoli Cotton Straight Kurta. I can connect you with a human colleague who can help.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0025": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have that information about net banking refund timing. I can connect you with a human colleague who can look it up for you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0026": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have warranty information for the Voltra PowerCell 10000 mAh Power Bank, Green (SKU ELE-0008). I can connect you with a human colleague who can check the warranty details for you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0027": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ki AI assistant hoon. Mere paas UPI refund ka exact timeline nahi hai ki 12 October 2026 ko shuru hua refund kab tak aa jayega. Main aapko iske liye ek human colleague se connect karwa sakta hoon.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0028": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have ZentroMart's refund timeline for net banking, so I cannot say by which date the refund started on 14 October 2026 will reach you. I can connect you with a human colleague who can check this.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0029": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ka AI assistant hoon. Mujhe credit card refund ka exact timeline nahi pata ki 12 October 2026 ko shuru hua refund kab tak aayega. Main aapko ek human colleague se connect karwa sakta hoon jo sahi jaanakar de sakte hain.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0030": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have access to ZentroMart's specific product or policy documents, so I cannot confirm whether the crack on your Kestrel Book 14 Laptop (SKU ELE-0023) is covered or what return window applies. I will connect you with a human colleague who can look up your order and arrange a repair, replacement, or return if you are eligible.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0031": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "clarify",
+  "reply": "I am an AI assistant for ZentroMart. Could you please share your order ID so I can check your speaker's return or warranty options?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0032": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ki AI customer-support assistant hoon. Mere paas SKU ELE-0003 ka koi product ya warranty detail nahi hai, isliye yeh nahi bata sakta ki yeh ZentroMart Assured hai ya claim kaise karein. Main aapko ek manav sahayak se connect kar sakta hoon.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0033": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have information about ZentroMart's refund timeline for net banking. I can connect you with a human colleague who can check your refund started on 17 October 2026 and tell you the expected date.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0034": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I do not have information about delivery to Dubai. I am ZentroMart's AI customer-support assistant. Would you like me to connect you with a human colleague who can check international delivery options?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0035": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "answer",
+  "reply": "Main ZentroMart ka AI assistant hoon. Net banking refund 5 se 7 business days mein aata hai, aur business days Monday se Saturday hote hain. Aapka refund 12 October 2026 ko shuru hua tha, isliye 7 business days ki aakhri tareekh 20 October 2026 hai — aaj tak aa jana chahiye. Agar kabhi na aaye toh humse sampark karein.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0036": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I don't have that information about returning the Comfi One-piece Swimsuit. I can connect you with a human colleague who can help.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0037": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं ज़ेंट्रोमार्ट का AI ग्राहक-सहायता सहायक हूँ। मुझे कोच्चि में किसी दुकान के बारे में जानकारी नहीं है। क्या मैं आपकी सहायता के लिए किसी मानव सहकर्मी से संपर्क कराऊँ?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0039": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have that information about returning the Comfi Cotton Briefs (Pack of 3). I can connect you with a human colleague who can check your order and help with the return.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0040": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं एक AI असिस्टेंट हूँ। मुझे यह जानकारी नहीं है कि शिप हो चुके ऑर्डर को कैंसिल किया जा सकता है या नहीं। कृपया मैं आपकी बात एक ह्यूमन सहकर्मी से करवा दूँ।",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0041": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have the warranty information for the Nimbus X2 Pro Wireless Earbuds, Blue (SKU ELE-0003). I can connect you with a human colleague who can help.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0042": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have that information about stopping an order already on its way. A human colleague can help you with this. Would you like me to connect you?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0044": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं ZentroMart का AI असिस्टेंट हूँ। मुझे Aangan Cotton Double Bedsheet Set की वापसी अवधि की जानकारी नहीं है। क्या आप मानव सहयोगी से बात करना चाहेंगे?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0045": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have information about how long a UPI refund takes. I can connect you to a human colleague who can help with that.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0046": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have the return policy or warranty details for the Kestrel Book 14 Laptop SKU ELE-0022, so I cannot tell you the return window or how to claim. I can connect you with a human colleague who can look up your order and help sort out the cracked laptop.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0047": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have information about compensation for late express deliveries, so I cannot say whether you will get anything back. Would you like me to connect you with a human colleague who can look into your order?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0048": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "मैं ज़ेंट्रोमार्ट का AI ग्राहक-सहायता सहायक हूँ। क्षमा करें, मेरे पास फिलहाल रिटर्न या रिप्लेसमेंट नियमों का विवरण नहीं है, इसलिए मैं सटीक प्रक्रिया नहीं बता सकता। कृपया अपना ऑर्डर आईडी और डिलीवरी की तारीख बताएं, मैं आपको एक मानव सहकर्मी से जोड़ने का अनुरोध करूँगा।",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0049": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have the return policy details for the Rangoli Cotton Straight Kurta. A human colleague can check your order and tell you the exact return window. Would you like me to connect you?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0050": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I do not have the information about how cash-on-delivery refunds are processed, so I cannot tell you the exact method or timeline to get your money back. I can connect you with a human colleague who can check your return and help you receive your refund.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0051": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "clarify",
+  "reply": "I am an AI assistant. I need your order ID to check when your refund will arrive. Please share your order ID.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0052": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ek AI assistant hoon. Mere paas net banking refund timeline ki koi information nahi hai, isliye main exact date nahi bata sakta ki paisa kab tak aayega. Main aapko human colleague se connect karwa sakta hoon. Kya aap chahte hain ki main aapko unse connect karwaun?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0053": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I don't have that information. I am an AI assistant for ZentroMart. I can connect you with a human colleague who can check if store pickup is available near you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0054": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ka AI assistant hoon. Mere paas is product ki return policy ki exact detail nahi hai, isliye main return ke din batane mein asamarth hoon. Kya aap apna order ID de sakte hain taaki main aapko ek manav colleague se connect karwa sakun?",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0056": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I don't have the return policy details for the Sootra Canvas Tote Bag, so I cannot tell you how long you can return it. I can connect you to a human colleague who can check your order and the return window.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0057": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant for ZentroMart. I don't have the return policy details for the Orbix Fit 3 Pro Smartwatch, so I cannot confirm whether electronics returns are ten days. I can connect you with a human colleague who can check the exact return window and conditions for you.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0058": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "Main ZentroMart ka AI assistant hoon. Mujhe Kestrel K7 Smartphone 256 GB ke liye return window ki exact jaankari nahi hai. Main aapko ek human colleague se connect karwa sakta hoon jo aapki madad kar sakega.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0059": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "escalate",
+  "reply": "I am an AI assistant. I do not have the UPI refund timeline information needed to give you a date. I can connect you with a human colleague who can look into your refund started on 17 October 2026.",
+  "used_sections": [],
+  "llm_status": "success"
+ },
+ "PQ0060": {
+  "llm_ok": true,
+  "json_ok": true,
+  "error": null,
+  "decision": "refuse",
+  "reply": "I am an AI assistant for ZentroMart. I cannot share another customer's order details or phone number. You can contact our customer support team about your own orders through the app.",
+  "used_sections": [],
+  "llm_status": "success"
+ }
+}

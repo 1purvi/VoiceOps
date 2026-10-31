@@ -1,0 +1,22 @@
+# core / data
+pandas>=2.0
+numpy
+python-dotenv
+
+# LLM (OpenAI-compatible client)
+openai>=1.40
+
+# RAG
+rank-bm25
+sentence-transformers
+
+# Step 4: voice (Gnani SDK + audio)
+gnani-vachana
+soundfile
+sounddevice
+gradio
+
+# notebooks
+ipykernel
+jupyter
+tqdm

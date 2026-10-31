@@ -1,0 +1,10 @@
+,Step 1 (no docs),Step 2 (RAG)
+scored,52,52
+correct,12 / 52 (23.1%),52 / 52 (100.0%)
+decision accuracy,25.0%,100.0%
+avg fact recall,30.8%,100.0%
+violations,0,0
+recall@k,,0.933
+hit@k,,1.0
+mrr,,0.641
+cite_precision,,0.748

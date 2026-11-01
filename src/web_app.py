@@ -171,9 +171,23 @@ with gr.Blocks(title="ZentroMart Voice Support") as demo:
     mic.stop_recording(on_audio, [mic, state, chat], [state, chat, reply, status, mic, end_btn, new_btn])
 
 
+def free_port(start, tries=20):
+    """First free port from start upward (an earlier run.py may still hold 7860)."""
+    import socket
+    for p in range(start, start + tries):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            if s.connect_ex(("127.0.0.1", p)) != 0:
+                return p
+    raise OSError(f"No free port between {start} and {start + tries - 1}. Stop the other run.py and try again.")
+
+
 def launch(port=7860, share=False):
     CALLS_DIR.mkdir(parents=True, exist_ok=True)
-    demo.launch(server_port=port, share=share, inbrowser=True, head=PAGE_JS,
+    free = free_port(port)
+    if free != port:
+        print(f"Port {port} is busy (an earlier run.py may still be running), using {free} instead.")
+    print(f"Opening the call at http://127.0.0.1:{free}  (Ctrl+C to stop)")
+    demo.launch(server_port=free, share=share, inbrowser=True, head=PAGE_JS,
                 allowed_paths=[str(CALLS_DIR)])                  # lets the page play the saved reply audio
 
 

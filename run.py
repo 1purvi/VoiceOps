@@ -88,7 +88,6 @@ def main():
         if args.voice:
             os.environ["TTS_VOICE"] = args.voice
         import web_app
-        print(f"Opening the call at http://127.0.0.1:{args.port}  (Ctrl+C to stop)")
         web_app.launch(port=args.port, share=args.share)
 
 

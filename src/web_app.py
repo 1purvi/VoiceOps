@@ -1,13 +1,18 @@
-"""Web interface for the ZentroMart voice agent: talk in the browser, hear the reply, say "bye" to end.
+"""Web interface for the ZentroMart voice agent, started by run.py.
 
     python run.py            # from the repository root: opens http://127.0.0.1:7860
 
-Record with the mic button; when you stop, the agent transcribes, answers and plays its reply.
-Saying bye / goodbye / alvida / बाय / अलविदा ends the call. "New call" starts a fresh conversation.
+How a call works
+  1. When the page opens, a call starts and the agent says its greeting out loud.
+     (If the browser blocks sound until you click, a "Start call" button appears; one click plays it.)
+  2. Press record, ask your question, press stop. The agent answers in text and speech.
+  3. Say "bye" (or goodbye / alvida / बाय / अलविदा): the agent says goodbye and the call ends.
+     Or press "End call" at any time. "Start new call" begins a fresh conversation.
 
 Each call is saved to outputs/live_calls/<timestamp>/ :
-    turn01.customer.wav, turn01.reply.wav, turn01.json, call.jsonl
+    turn00.greeting.wav, turn01.customer.wav, turn01.reply.wav, turn01.json, call.jsonl
 """
+import base64
 import json
 import re
 import shutil
@@ -26,34 +31,72 @@ from config import OUT_DIR  # noqa: E402
 
 CALLS_DIR = OUT_DIR / "live_calls"
 BYE = re.compile(r"\b(bye|goodbye|good bye|alvida|tata)\b|बाय|अलविदा", re.IGNORECASE)
-
-
 GREETING = "Namaste! I am ZentroMart's AI support assistant. How can I help you today?"
+FAREWELL = "Thank you for calling ZentroMart. Goodbye!"
+
+_greeting_wav = {}                       # voice -> WAV bytes, synthesised once per server run
+
+
+def greeting_audio(va):
+    if TTS_VOICE not in _greeting_wav:
+        _greeting_wav[TTS_VOICE], _ = va.speech.speak(GREETING)
+    return _greeting_wav[TTS_VOICE]
+
+
+def greeting_html(wav_bytes, call_id):
+    """Greeting player. The page script plays it as soon as it appears; if the browser blocks sound,
+    it shows the Start call button instead (one click plays it)."""
+    if not wav_bytes:
+        return ""
+    src = "data:audio/wav;base64," + base64.b64encode(wav_bytes).decode()
+    return (f'<audio id="zm-greet" data-call="{call_id}" src="{src}" preload="auto"></audio>'
+            '<div id="zm-start" style="display:none;justify-content:center;padding:12px 0">'
+            '<button id="zm-start-btn" class="lg primary" style="padding:12px 28px;font-size:16px;'
+            'border-radius:8px;border:none;background:#ea580c;color:white;cursor:pointer">'
+            'Start call</button></div>')
+
+
+def call_ui(active):
+    """Show the mic and End call during a call; show Start new call after it ends."""
+    return (gr.update(visible=active, value=None),      # mic
+            gr.update(visible=active),                  # End call
+            gr.update(visible=not active))              # Start new call
 
 
 def new_call():
-    """Start a call: fresh agent memory, then the agent speaks its greeting."""
-    call_dir = CALLS_DIR / datetime.now().strftime("%Y%m%d_%H%M%S")
+    """Start a call: fresh agent memory, then the agent greets the caller."""
+    call_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    call_dir = CALLS_DIR / call_id
     call_dir.mkdir(parents=True, exist_ok=True)
     va = VoiceAgent(TTS_VOICE, fast=True)                     # live-call mode: short replies, faster search
-    va.agent.turn_no += 1                                     # greeting already says it is an AI assistant
+    va.agent.turn_no += 1                                     # the greeting already says it is an AI assistant
     va.agent.history.append({"role": "assistant", "content": GREETING})
     state = {"agent": va, "dir": call_dir, "turn": 0, "ended": False}
-    greeting_wav, status = call_dir / "turn00.greeting.wav", f"Call started. Saving to {call_dir}"
+
+    status, wav = "**Call in progress.** Press record, ask your question, then press stop.", None
     try:
-        wav, _ = va.speech.speak(GREETING)
-        greeting_wav.write_bytes(wav)
+        wav = greeting_audio(va)
+        (call_dir / "turn00.greeting.wav").write_bytes(wav)
     except Exception as e:                                    # show the real TTS error, keep the call usable
-        greeting_wav, status = None, status + f" | TTS ERROR: {type(e).__name__}: {str(e)[:200]}"
+        status += f"  \nTTS error: {type(e).__name__}: {str(e)[:200]}"
     history = [{"role": "assistant", "content": GREETING}]
-    return state, history, str(greeting_wav) if greeting_wav else None, status
+    return (state, history, greeting_html(wav, call_id), None, status, *call_ui(True))
+
+
+def end_call(state, history):
+    """End the call from the button."""
+    if state and not state["ended"]:
+        state["ended"] = True
+        history = history + [{"role": "assistant", "content": "*Call ended.*"}]
+    return (state, history, "", None, "**Call ended.** Press *Start new call* to talk again.", *call_ui(False))
 
 
 def on_audio(audio_path, state, history):
-    if not audio_path:
-        return state, history, None, gr.update(), "No audio recorded."
+    """One turn: customer audio -> transcript -> agent -> spoken reply. 'Bye' ends the call."""
     if state is None or state["ended"]:
-        state, history, _, _ = new_call()
+        return (state, history, None, "**Call ended.** Press *Start new call* to talk again.", *call_ui(False))
+    if not audio_path:
+        return (state, history, None, "No audio recorded. Press record and try again.", *call_ui(True))
 
     state["turn"] += 1
     n, call_dir = state["turn"], state["dir"]
@@ -61,42 +104,77 @@ def on_audio(audio_path, state, history):
     shutil.copy(audio_path, customer_wav)
     reply_wav = call_dir / f"turn{n:02d}.reply.wav"
 
-    rec = state["agent"].turn(customer_wav, reply_wav)
+    rec = state["agent"].turn(customer_wav, reply_wav, closing=(BYE, FAREWELL))
     rec["file"] = customer_wav.name
     (call_dir / f"turn{n:02d}.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
     with open(call_dir / "call.jsonl", "a", encoding="utf-8") as fh:
         fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
-    history = history + [
-        {"role": "user", "content": rec["transcript"] or "(could not hear)"},
-        {"role": "assistant", "content": f"{rec['reply']}  [{rec['decision']}]"},
-    ]
-    status = f"Turn {n} saved in {call_dir}"
-    if rec["error"]:
-        status += f" | ERROR: {rec['error']}"
-    if BYE.search(rec["transcript"] or ""):
+    history = history + [{"role": "user", "content": rec["transcript"] or "(could not hear you)"},
+                         {"role": "assistant", "content": rec["reply"]}]
+    reply_audio = str(reply_wav) if reply_wav.exists() else None
+    error = f"  \nError: {rec['error']}" if rec.get("error") else ""
+
+    if rec.get("call_ended"):
         state["ended"] = True
-        status += " | Call ended. Press 'New call' to start again."
+        history = history + [{"role": "assistant", "content": "*Call ended.*"}]
+        return (state, history, reply_audio,
+                "**Call ended.** Press *Start new call* to talk again." + error, *call_ui(False))
+    return (state, history, reply_audio, "**Call in progress.** Press record to ask your next question." + error,
+            *call_ui(True))
 
-    return state, history, str(reply_wav) if reply_wav.exists() else None, None, status
 
+# Plays the greeting as soon as it appears on the page. Browsers may block sound until the first click;
+# then the Start call button is shown and one click plays the greeting.
+PAGE_JS = """
+<script>
+(() => {
+  const tryGreet = () => {
+    const a = document.getElementById('zm-greet');
+    if (!a || a.dataset.tried === a.dataset.call) return;
+    a.dataset.tried = a.dataset.call;
+    a.play().catch(() => {
+      const s = document.getElementById('zm-start');
+      if (s) s.style.display = 'flex';
+    });
+  };
+  new MutationObserver(tryGreet).observe(document.documentElement, {childList: true, subtree: true});
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#zm-start-btn')) return;
+    const a = document.getElementById('zm-greet');
+    if (a) { a.currentTime = 0; a.play(); }
+    document.getElementById('zm-start').style.display = 'none';
+  });
+})();
+</script>
+"""
+STOP_AUDIO_JS = "() => { document.querySelectorAll('audio').forEach(a => a.pause()); }"
 
 with gr.Blocks(title="ZentroMart Voice Support") as demo:
-    gr.Markdown("## ZentroMart voice support\nRecord your question with the mic. Say **bye** to end the call.")
+    gr.Markdown("## ZentroMart voice support\nAsk about orders, returns, refunds and deliveries. "
+                "Say **bye** or press **End call** to finish.")
     state = gr.State(None)
-    chat = gr.Chatbot(height=380, label="Conversation")
-    mic = gr.Audio(sources=["microphone"], type="filepath", label="Your question")
-    reply = gr.Audio(label="Agent reply", autoplay=True, interactive=False)
     status = gr.Markdown()
-    new_btn = gr.Button("New call")
+    greet = gr.HTML()
+    chat = gr.Chatbot(height=380, label="Conversation")
+    mic = gr.Audio(sources=["microphone"], type="filepath", label="Your question (record, then stop)")
+    reply = gr.Audio(label="Agent reply", autoplay=True, interactive=False)
+    with gr.Row():
+        end_btn = gr.Button("End call", variant="stop")
+        new_btn = gr.Button("Start new call", variant="primary", visible=False)
 
-    mic.stop_recording(on_audio, [mic, state, chat], [state, chat, reply, mic, status])
-    new_btn.click(new_call, None, [state, chat, reply, status])
-    demo.load(new_call, None, [state, chat, reply, status])
+    call_outputs = [state, chat, greet, reply, status, mic, end_btn, new_btn]
+    demo.load(new_call, None, call_outputs)
+    new_btn.click(new_call, None, call_outputs)
+    end_btn.click(None, None, None, js=STOP_AUDIO_JS)                 # silence any audio still playing
+    end_btn.click(end_call, [state, chat], call_outputs)
+    mic.stop_recording(on_audio, [mic, state, chat], [state, chat, reply, status, mic, end_btn, new_btn])
 
 
 def launch(port=7860, share=False):
-    demo.launch(server_port=port, share=share, inbrowser=True)
+    CALLS_DIR.mkdir(parents=True, exist_ok=True)
+    demo.launch(server_port=port, share=share, inbrowser=True, head=PAGE_JS,
+                allowed_paths=[str(CALLS_DIR)])                  # lets the page play the saved reply audio
 
 
 if __name__ == "__main__":

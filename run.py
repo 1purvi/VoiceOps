@@ -1,11 +1,20 @@
 """ZentroMart voice support agent: the one command to run everything.
 
-    python run.py                                   # web app: opens the browser, starts a call, ask by mic
+    python run.py                                   # Steps 1-3 evaluation, then the web app with a live call
+    python run.py --fresh                           # same, but delete cached answers and ask the LLM again
+    python run.py --skip_eval                       # open the web app straight away
     python run.py --audio_dir path/to/audio         # batch: every audio file = a separate call
     python run.py --audio_dir path/to/call --conversation   # batch: files in name order = one call
 
+What python run.py does, in order:
+  1. Step 1: LLM only on practice/questions.csv            -> outputs/results_baseline.csv
+  2. Step 2: LLM + RAG on practice/questions.csv           -> outputs/results_rag_v4.csv, step1_vs_step2.csv
+  3. Step 3: agent + tools on practice/conversations.csv   -> outputs/step3_metrics_v4.csv (+ per-turn results)
+  4. Opens the web app; the agent says "Namaste! I am ZentroMart's AI support assistant..."
+Answers are cached in outputs/, so after the first full run steps 1-3 only re-score and take seconds.
+
 Web app: the agent greets you by voice; record a question with the mic, hear the spoken reply.
-Say "bye" to end the call, or press "New call". Every turn is saved to outputs/live_calls/<timestamp>/.
+Say "bye" or press "End call" to finish; "Start new call" begins again. Every turn is saved to outputs/live_calls/<timestamp>/.
 
 Batch (organiser test): for each audio file writes <name>.reply.wav and <name>.json (transcript, reply,
 decision, tools used and the document chunks used), plus results.csv and results.jsonl.
@@ -51,6 +60,9 @@ def main():
     ap.add_argument("--voice", help="Gnani timbre-v2.5 voice (default Kaveri)")
     ap.add_argument("--port", type=int, default=7860, help="web app port (default 7860)")
     ap.add_argument("--share", action="store_true", help="web app: also create a public Gradio link")
+    ap.add_argument("--skip_eval", action="store_true", help="skip the Steps 1-3 evaluation and open the app")
+    ap.add_argument("--fresh", action="store_true",
+                    help="delete cached answers so Steps 1-3 ask the LLM again (slow: about 200 LLM turns)")
     args = ap.parse_args()
 
     check_setup()
@@ -64,7 +76,15 @@ def main():
         if args.voice:
             argv += ["--voice", args.voice]
         batch_run.main(argv)
-    else:                                                          # web app with a live call
+    else:                                                          # evaluation, then web app with a live call
+        if not args.skip_eval:
+            import evaluate
+            try:
+                evaluate.run_all(fresh=args.fresh)
+            except KeyboardInterrupt:
+                print("\nEvaluation stopped. Finished answers are cached; opening the app.")
+            except Exception as e:                                 # show the real reason, still open the app
+                print(f"\nEvaluation stopped: {type(e).__name__}: {e}\nFinished answers are cached; opening the app.")
         if args.voice:
             os.environ["TTS_VOICE"] = args.voice
         import web_app

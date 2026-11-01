@@ -352,13 +352,19 @@ class VoiceAgent:
         out = self.respond_text(transcript)
         return {**out, "agent_s": round(time.time() - t0, 1)}
 
-    def turn(self, audio_path, reply_wav=None):
+    def turn(self, audio_path, reply_wav=None, closing=None):
         """One full voice turn = hear() + think() + speak. audio_path: file path or WAV bytes.
-        reply_wav: where to save the reply audio (run.py), or None to keep it in self.last_reply_wav (live calls)."""
+        reply_wav: where to save the reply audio (run.py), or None to keep it in self.last_reply_wav (live calls).
+        closing: optional (regex, goodbye_text). If the caller's words match the regex (e.g. "bye"), the agent
+        says goodbye_text and the result has call_ended=True, without calling the LLM."""
         t0 = time.time()
         rec = {"audio": "<microphone>" if isinstance(audio_path, (bytes, bytearray)) else str(audio_path),
                "reply_audio": None, **self.hear(audio_path)}
-        out = self.think(rec["transcript"])
+        if closing and closing[0].search(rec["transcript"] or ""):
+            out = {"decision": "answer", "reply": closing[1], "used_sections": [], "retrieved": [],
+                   "tool_calls": [], "call_ended": True}
+        else:
+            out = self.think(rec["transcript"])
         spoken = for_speech(out.get("reply", ""))
         self.last_reply_wav = None
         try:
@@ -371,7 +377,8 @@ class VoiceAgent:
             rec["error"] = (rec["error"] + " | " if rec["error"] else "") + f"TTS {type(e).__name__}: {str(e)[:200]}"
         used = list(out.get("used_sections") or [])
         kb_ids = [i for i in out.get("retrieved", []) if not i.startswith("products.csv")]
-        rec.update(reply=out.get("reply", ""), spoken_text=spoken, decision=out.get("decision"),
+        rec.update(call_ended=bool(out.get("call_ended")),
+                   reply=out.get("reply", ""), spoken_text=spoken, decision=out.get("decision"),
                    unclear_audio=bool(out.get("unclear_audio")), used_sections=used,
                    retrieved=list(out.get("retrieved") or []), chunks=chunk_texts(used or kb_ids[:5]),
                    tool_calls=[{k: v for k, v in c.items()

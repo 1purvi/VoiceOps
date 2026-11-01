@@ -75,13 +75,14 @@ ticket is actually created.
 ## What each file does
 
 ```
-run.py                     start here: opens the call app, or runs a folder of audio files
+run.py                     start here: runs Steps 1–3, then opens the call app (or runs a folder of audio)
 src/
 ├── config.py              paths, settings and API keys loaded from .env
 ├── llm.py                 system prompt, LLM call with retries, JSON parsing
 ├── rag_pipeline.py        chunking, embeddings + BM25 index, hybrid retrieval, date table
 ├── agent.py               conversation agent: tool loop, memory, verification and ticket rules
 ├── voice.py               Gnani speech-to-text and text-to-speech around the agent
+├── evaluate.py            runs Steps 1–3 and saves the results (called by run.py)
 ├── web_app.py             Gradio page: record a question, hear the reply, keep the call going
 ├── batch_run.py           answers every audio file in a folder and saves the results
 ├── call_handsfree.py      terminal call that starts and stops recording on your voice
@@ -98,15 +99,28 @@ demo.mp4                   demo video
 ```
 
 ## Run
-Talk to the agent (opens the browser and starts a call):
+
+Everything starts from one command:
 
 ```
 python run.py
 ```
 
-Run the agent on a folder of audio files (replies, audio and the document sections used are saved in
-`sample_outputs/run/`):
+It runs the whole project in order:
 
-```
-python run.py --audio_dir path/to/audio_folder
-```
+1. **Step 1:** the LLM alone answers `practice/questions.csv`, and the scores are saved.
+2. **Step 2:** the LLM with document search answers the same questions, and the Step 1 vs Step 2 table is saved.
+3. **Step 3:** the agent runs the multi-turn `practice/conversations.csv`, and the conversation results are saved.
+4. **App:** the browser opens, a call starts and the agent says *"Namaste! I am ZentroMart's AI support
+   assistant. How can I help you today?"* Record your question, listen to the reply, and say "bye" or press
+   **End call** to finish.
+
+All results are saved in `outputs/`. Every LLM answer is cached, so after the first full run Steps 1–3 only
+re-score the saved answers and take a few seconds.
+
+| Command | What it does |
+| --- | --- |
+| `python run.py` | Steps 1–3, then the app |
+| `python run.py --fresh` | Deletes the cached answers and runs Steps 1–3 from scratch (slow), then the app |
+| `python run.py --skip_eval` | Opens the app straight away |
+| `python run.py --audio_dir path/to/audio_folder` | Answers every audio file in a folder; replies, audio and the document sections used are saved in `sample_outputs/run/` |

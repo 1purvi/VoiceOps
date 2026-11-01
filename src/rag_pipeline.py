@@ -189,10 +189,12 @@ def date_table(start, n_business=10, calendar=(7, 10, 15, 30)):
 
 
 RULES = """- Use the date table; never count days yourself. Business days already skip Sundays and holidays.
-- For "by when / kab tak / कब तक" questions take the LAST number of the range in the section (e.g. 5-7 -> +7)
-  and give that ONE date with the year: "by 27 October 2026". Do not give a range of dates.
+- Count from the date the customer gave (refund start, delivery or order date), not from today, unless
+  they gave no date.
+- For "by when / kab tak / कब तक" questions take the LAST number of the range in the section (e.g. A-B -> +B)
+  and give that ONE date with the year: "by <day> <month> <year>". Do not give a range of dates.
 - Before "reply", add a key "calc" to the JSON showing the lookup, e.g.
-  "calc": "net banking 3-5 business days -> +5 from 17 Oct -> 24 Oct". The customer never sees "calc".
+  "calc": "<payment method> A-B business days -> +B from <start date> -> <end date>". The customer never sees "calc".
 - Always state the exact figure from the section that answers the question (days, months, rupee amount, date).
 - Product rows give an item's return category and brand warranty; the policy section gives the rule. For
   warranty or Assured questions, give the warranty period in months from the warranty policy section; the
@@ -218,8 +220,10 @@ RULES = """- Use the date table; never count days yourself. Business days alread
 
 def make_guide(question):
     today = date.fromisoformat(TODAY)
-    starts = [d for d in find_dates(question) if d != today] + [today]
-    tables = "\n".join("  " + date_table(d) for d in starts)
+    given = [d for d in find_dates(question) if d != today]
+    rows = [f"  [date the customer gave - count from this row] {date_table(d)}" for d in given]
+    rows.append(f"  [today - use only if the customer gave no start date] {date_table(today)}")
+    tables = "\n".join(rows)
     return ("NOTES FOR THIS ANSWER (not a document; never cite this block):\n"
             f"- Today is {today.day} {today:%B %Y}. Date table:\n{tables}\n{RULES}\n")
 

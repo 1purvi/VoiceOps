@@ -33,7 +33,9 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     audio_dir, out_dir = Path(args.audio_dir), Path(args.out_dir)
-    files = sorted(p for p in audio_dir.iterdir() if p.suffix.lower() in AUDIO_EXTENSIONS)
+    files = sorted(p for p in audio_dir.iterdir()
+                   if p.is_file() and p.suffix.lower() in AUDIO_EXTENSIONS
+                   and not p.name.startswith("."))                       # skip macOS "._file.wav" copies
     if not files:
         sys.exit(f"No audio files found in {audio_dir} ({', '.join(sorted(AUDIO_EXTENSIONS))})")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -42,8 +44,21 @@ def main(argv=None):
 
     records, va = [], VoiceAgent(args.voice) if args.conversation else None
     for i, f in enumerate(files, 1):
-        agent = va if args.conversation else VoiceAgent(args.voice)       # fresh memory per call
-        rec = agent.turn(f, out_dir / f"{f.stem}.reply.wav")
+        try:
+            agent = va if args.conversation else VoiceAgent(args.voice)   # fresh memory per call
+            rec = agent.turn(f, out_dir / f"{f.stem}.reply.wav")
+        except Exception as e:                                            # one bad file must not stop the batch
+            rec = {"audio": str(f), "transcript": "", "reply": "", "decision": None, "chunks": [],
+                   "used_sections": [], "reply_audio": None, "unclear_audio": False, "seconds": 0,
+                   "error": f"{type(e).__name__}: {str(e)[:300]}"}
+            try:                                                          # still answer with speech
+                import voice
+                wav, _ = voice.Speech(args.voice).speak(voice.ERROR_REPLY["en"])
+                (out_dir / f"{f.stem}.reply.wav").write_bytes(wav)
+                rec.update(reply=voice.ERROR_REPLY["en"], decision="escalate",
+                           reply_audio=str(out_dir / f"{f.stem}.reply.wav"))
+            except Exception as e2:
+                rec["error"] += f" | TTS {type(e2).__name__}: {str(e2)[:200]}"
         rec["file"] = f.name
         (out_dir / f"{f.stem}.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
         records.append(rec)
@@ -62,6 +77,8 @@ def main(argv=None):
         for r in records:
             w.writerow({**r, "used_sections": " ; ".join(r["used_sections"])})
     errors = sum(1 for r in records if r["error"])
+    spoken = sum(1 for r in records if r.get("reply_audio"))
+    print(f"Spoken replies: {spoken} / {len(records)} files")
     print(f"\nDone: {len(records)} files, {errors} with errors. Results in {out_dir}/results.csv")
 
 

@@ -368,7 +368,14 @@ class VoiceAgent:
         spoken = for_speech(out.get("reply", ""))
         self.last_reply_wav = None
         try:
-            self.last_reply_wav, rec["tts_language"] = self.speech.speak(spoken)
+            for attempt in range(3):                             # a brief network hiccup should not lose the reply
+                try:
+                    self.last_reply_wav, rec["tts_language"] = self.speech.speak(spoken)
+                    break
+                except Exception:
+                    if attempt == 2:
+                        raise
+                    time.sleep(1 + attempt)
             if reply_wav:
                 Path(reply_wav).parent.mkdir(parents=True, exist_ok=True)
                 Path(reply_wav).write_bytes(self.last_reply_wav)

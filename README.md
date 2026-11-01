@@ -3,6 +3,7 @@
 A voice customer-support agent for ZentroMart, a fictional Indian online store. A customer speaks a
 question; the agent answers from the company's policy documents, looks up orders, hands over to a human
 when needed, and replies with speech in English, Hindi or Hinglish.
+My repo : https://github.com/1purvi/VoiceOps
 
 ```
 customer audio → Gnani STT → agent (LLM + document search + tools) → Gnani TTS → spoken reply
